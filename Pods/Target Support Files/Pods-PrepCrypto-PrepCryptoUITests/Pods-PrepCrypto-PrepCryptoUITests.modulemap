@@ -1,0 +1,6 @@
+framework module Pods_PrepCrypto_PrepCryptoUITests {
+  umbrella header "Pods-PrepCrypto-PrepCryptoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-PrepCrypto-PrepCryptoUITests/Pods-PrepCrypto-PrepCryptoUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/SwiftAlgorithms/Algorithms.framework
