@@ -36,8 +36,8 @@ class CryptoListViewController: UIViewController {
             case .success(let data):
                 self.cryptodata = data
                 DispatchQueue.main.async {
-                    self.spinner.isHidden = true
                     self.tabeView.reloadData()
+                    self.spinner.isHidden = true
                 }
             case .failure(let error):
                 //error handling
@@ -62,5 +62,15 @@ extension CryptoListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.setData(data: crypto)
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard tabeView.indexPathForSelectedRow != nil else { return }
+        
+        let selectedCrypto = cryptodata[tabeView.indexPathForSelectedRow!.row]
+        
+        let tranferDestination = segue.destination as! DetailedCryptoViewController
+        
+        tranferDestination.cryptoID = selectedCrypto.id
     }
 }

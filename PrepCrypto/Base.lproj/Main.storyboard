@@ -143,11 +143,24 @@
         <!--Detailed Crypto View Controller-->
         <scene sceneID="1VY-dX-WWE">
             <objects>
-                <viewController id="14L-la-6bc" customClass="DetailedCryptoViewController" customModule="PrepCrypto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailedPotfolio" useStoryboardIdentifierAsRestorationIdentifier="YES" id="14L-la-6bc" customClass="DetailedCryptoViewController" customModule="PrepCrypto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="top" id="HUo-49-eWK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Wi-Nd-E4h">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-6N-cFN">
+                                        <rect key="frame" x="197" y="377" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Sm6-6N-cFN" firstAttribute="centerX" secondItem="4Wi-Nd-E4h" secondAttribute="centerX" id="dCr-Zi-dch"/>
+                                    <constraint firstItem="Sm6-6N-cFN" firstAttribute="centerY" secondItem="4Wi-Nd-E4h" secondAttribute="centerY" id="ihc-Y6-GBV"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSv-He-ikP">
                                 <rect key="frame" x="0.0" y="108" width="414" height="100"/>
                                 <subviews>
@@ -339,9 +352,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 7 day Flatuation Grapgh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9H-22-cgF">
-                                <rect key="frame" x="10" y="660" width="218" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 7 day Flatuation Grapgh Drown on usd " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9H-22-cgF">
+                                <rect key="frame" x="129.5" y="660" width="264.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -352,6 +365,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system" title=" Add to Potfolio"/>
+                                <connections>
+                                    <action selector="addToPotfolio:" destination="14L-la-6bc" eventType="touchUpInside" id="VMw-ev-pYW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-q4-82S">
                                 <rect key="frame" x="359.5" y="792" width="44.5" height="40"/>
@@ -379,11 +395,15 @@
                             <constraint firstItem="nIa-Ym-dIP" firstAttribute="leading" secondItem="pSh-PL-tGB" secondAttribute="leading" constant="10" id="YaX-Z7-dpv"/>
                             <constraint firstItem="pSh-PL-tGB" firstAttribute="trailing" secondItem="fTc-lk-7CI" secondAttribute="trailing" id="Za9-qh-tp1"/>
                             <constraint firstItem="pSh-PL-tGB" firstAttribute="trailing" secondItem="V5Q-q4-82S" secondAttribute="trailing" constant="10" id="Zhf-1q-HLu"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="4Wi-Nd-E4h" secondAttribute="bottom" id="cad-B3-ShK"/>
+                            <constraint firstItem="pSh-PL-tGB" firstAttribute="trailing" secondItem="h9H-22-cgF" secondAttribute="trailing" constant="20" id="czz-K2-xCh"/>
+                            <constraint firstItem="4Wi-Nd-E4h" firstAttribute="leading" secondItem="pSh-PL-tGB" secondAttribute="leading" id="i6W-uU-f0n"/>
                             <constraint firstItem="h9H-22-cgF" firstAttribute="top" secondItem="fTc-lk-7CI" secondAttribute="bottom" constant="10" id="mCK-QY-QjI"/>
-                            <constraint firstItem="h9H-22-cgF" firstAttribute="leading" secondItem="pSh-PL-tGB" secondAttribute="leading" constant="10" id="mx4-cW-Ibj"/>
                             <constraint firstItem="YSv-He-ikP" firstAttribute="top" secondItem="pSh-PL-tGB" secondAttribute="top" constant="20" id="oAJ-s4-3hX"/>
                             <constraint firstItem="uib-R1-NFR" firstAttribute="top" secondItem="YSv-He-ikP" secondAttribute="bottom" constant="15" id="u8r-dc-ecY"/>
+                            <constraint firstItem="4Wi-Nd-E4h" firstAttribute="top" secondItem="pSh-PL-tGB" secondAttribute="top" id="vVj-eu-OOd"/>
                             <constraint firstItem="fdJ-fh-V0A" firstAttribute="leading" secondItem="pSh-PL-tGB" secondAttribute="leading" id="wHe-aA-LYw"/>
+                            <constraint firstItem="pSh-PL-tGB" firstAttribute="trailing" secondItem="4Wi-Nd-E4h" secondAttribute="trailing" id="ybd-JP-wyu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="G38-G5-ooc"/>
@@ -396,6 +416,7 @@
                         <outlet property="nameLable" destination="CmQ-KD-Flj" id="2db-n6-KRa"/>
                         <outlet property="persentagePriceLable" destination="5r5-nW-O2T" id="Vg6-tu-Dqg"/>
                         <outlet property="priceLable" destination="y49-kR-MLp" id="9tU-1c-bNM"/>
+                        <outlet property="spinnerView" destination="4Wi-Nd-E4h" id="4xb-WR-4IB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLj-BJ-wD4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

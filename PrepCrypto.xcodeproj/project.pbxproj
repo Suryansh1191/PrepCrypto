@@ -11,6 +11,8 @@
 		7EFD5B75115C357F85A59DBB /* Pods_PrepCrypto_PrepCryptoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CBBE35FCD0DB99B135DF31 /* Pods_PrepCrypto_PrepCryptoUITests.framework */; };
 		AA3A9427CFB205DE4C70679F /* Pods_PrepCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4A2D2AE9DEF36B88D87BC4 /* Pods_PrepCrypto.framework */; };
 		E475E49628A80CC00074889F /* extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E49528A80CC00074889F /* extentions.swift */; };
+		E475E49928AA3A800074889F /* AddToPotfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E475E49828AA3A800074889F /* AddToPotfolio.storyboard */; };
+		E475E49B28AA3AA20074889F /* AddToPotfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E49A28AA3AA20074889F /* AddToPotfolioViewController.swift */; };
 		E49CE5A728A63336001EB99C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CE5A628A63336001EB99C /* AppDelegate.swift */; };
 		E49CE5A928A63336001EB99C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CE5A828A63336001EB99C /* SceneDelegate.swift */; };
 		E49CE5AB28A63336001EB99C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CE5AA28A63336001EB99C /* ViewController.swift */; };
@@ -61,6 +63,8 @@
 		CE4A2D2AE9DEF36B88D87BC4 /* Pods_PrepCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43F65C7837745519850D153 /* Pods-PrepCryptoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepCryptoTests.release.xcconfig"; path = "Target Support Files/Pods-PrepCryptoTests/Pods-PrepCryptoTests.release.xcconfig"; sourceTree = "<group>"; };
 		E475E49528A80CC00074889F /* extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extentions.swift; sourceTree = "<group>"; };
+		E475E49828AA3A800074889F /* AddToPotfolio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddToPotfolio.storyboard; sourceTree = "<group>"; };
+		E475E49A28AA3AA20074889F /* AddToPotfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPotfolioViewController.swift; sourceTree = "<group>"; };
 		E49CE5A328A63336001EB99C /* PrepCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrepCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49CE5A628A63336001EB99C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E49CE5A828A63336001EB99C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,8 +129,16 @@
 				8782B66A75CF1BAA0960867A /* Pods-PrepCryptoTests.debug.xcconfig */,
 				D43F65C7837745519850D153 /* Pods-PrepCryptoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E475E49728AA39EB0074889F /* AddToPotfolioView */ = {
+			isa = PBXGroup;
+			children = (
+				E475E49828AA3A800074889F /* AddToPotfolio.storyboard */,
+				E475E49A28AA3AA20074889F /* AddToPotfolioViewController.swift */,
+			);
+			path = AddToPotfolioView;
 			sourceTree = "<group>";
 		};
 		E49CE59A28A63336001EB99C = {
@@ -217,6 +229,7 @@
 		E49CE5E228A670D5001EB99C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				E475E49728AA39EB0074889F /* AddToPotfolioView */,
 				E49CE5E328A670E7001EB99C /* Contants.swift */,
 				E49CE5E728A6730D001EB99C /* UrlContaner.swift */,
 				E49CE5E928A6769B001EB99C /* ApiNetworkCall.swift */,
@@ -356,6 +369,7 @@
 				E49CE5B628A6333C001EB99C /* LaunchScreen.storyboard in Resources */,
 				E49CE5B328A6333C001EB99C /* Assets.xcassets in Resources */,
 				E49CE5AE28A63336001EB99C /* Main.storyboard in Resources */,
+				E475E49928AA3A800074889F /* AddToPotfolio.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +506,7 @@
 				E49CE5E428A670E7001EB99C /* Contants.swift in Sources */,
 				E49CE5EC28A6792A001EB99C /* CryptoListModel.swift in Sources */,
 				E49CE5A928A63336001EB99C /* SceneDelegate.swift in Sources */,
+				E475E49B28AA3AA20074889F /* AddToPotfolioViewController.swift in Sources */,
 				E49CE5DD28A6688F001EB99C /* CryptoListViewController.swift in Sources */,
 				E49CE5E128A668BD001EB99C /* HistoryViewController.swift in Sources */,
 				E49CE5EA28A6769B001EB99C /* ApiNetworkCall.swift in Sources */,

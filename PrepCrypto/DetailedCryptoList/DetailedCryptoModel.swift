@@ -85,12 +85,12 @@ struct MarketData: Codable {
     var fullyDilutedValuation, totalVolume, high24H, low24H: Currency?
     var priceChange24H, priceChangePercentage24H, priceChangePercentage7D, priceChangePercentage14D: Double?
     var priceChangePercentage30D, priceChangePercentage60D, priceChangePercentage200D, priceChangePercentage1Y: Double?
-    var marketCapChange24H: Int?
+    var marketCapChange24H: Double?
     var marketCapChangePercentage24H: Double?
     var priceChange24HInCurrency, priceChangePercentage1HInCurrency, priceChangePercentage24HInCurrency, priceChangePercentage7DInCurrency: Currency?
     var priceChangePercentage14DInCurrency, priceChangePercentage30DInCurrency, priceChangePercentage60DInCurrency, priceChangePercentage200DInCurrency: Currency?
     var priceChangePercentage1YInCurrency, marketCapChange24HInCurrency, marketCapChangePercentage24HInCurrency: Currency?
-    var totalSupply, maxSupply, circulatingSupply: Int?
+    var totalSupply, maxSupply, circulatingSupply: Double?
     var lastUpdated: String?
     var sparkline7D: Sparkline7D?
 

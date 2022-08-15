@@ -33,11 +33,11 @@ class CrytoTableViewCell: UITableViewCell {
         DispatchQueue.main.async {
             self.nameLable.text = data.name
             self.priceLable.text = "₹ \(String(describing: data.currentPrice ?? 0.0))"
-            self.subPriceLable.text = " \(String(format: "%.2f",  data.marketCapChangePercentage24H ?? 0.0)) %"
+            self.subPriceLable.text = " \(String(format: "%.2f",  data.priceChangePercentage24H ?? 0.0)) %"
             self.subNameLable.text = data.symbol
             
             //changing colour according to the rate
-            if (data.marketCapChangePercentage24H ?? 0) < 0 {
+            if (data.priceChangePercentage24H ?? 0) < 0 {
                 self.subPriceLable.textColor = .red
                 self.indicatorImage.image = UIImage(systemName: "arrowtriangle.down.fill")
                 self.indicatorImage.tintColor = .red

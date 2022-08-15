@@ -18,23 +18,21 @@ class DetailedCryptoViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var persentagePriceLable: UILabel!
     @IBOutlet weak var indicatorImage: UIImageView!
     @IBOutlet weak var lineChart: LineChartView!
+    @IBOutlet weak var spinnerView: UIView!
     
-    let cryptoID: String? = "bitcoin"
+    var cryptoID: String? = "bitcoin"
     var cryptoData: DetailedCryptoModel? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View some here")
+        spinnerView.isHidden = false
         lineChart.delegate = self
-        // Do any additional setup after loading the view.
+        
         getCryptoIDData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
-        
-    }
+    override func viewWillAppear(_ animated: Bool) {        }
     
     func setDataValue() {
         guard cryptoData != nil else { return }
@@ -87,12 +85,16 @@ class DetailedCryptoViewController: UIViewController, ChartViewDelegate {
         
         lineChart.data = data
         
+        spinnerView.isHidden = true
+        
     }
     
     func getCryptoIDData() {
         
         guard cryptoID != nil else { return }
         let url = URL(string: "\(UrlContaner.crypto)\(cryptoID!)?tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false&sparkline=true")!
+        
+        
         
         ApiNetworkCall.apiCall(DetailedCryptoModel.self, url: URLRequest(url:  url)) { result in
             switch result {
@@ -108,6 +110,17 @@ class DetailedCryptoViewController: UIViewController, ChartViewDelegate {
         }
         
     }
+    
+    
+    @IBAction func addToPotfolio(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "AddToPotfolio", bundle: nil)
+        let myAlert = storyboard.instantiateViewController(withIdentifier: "addToPotfolioID")
+        myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(myAlert, animated: true, completion: nil)
+        
+    }
+    
 
     
     
