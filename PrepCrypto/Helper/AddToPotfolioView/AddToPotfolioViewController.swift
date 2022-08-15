@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddToPotfolioProtocal {
+    func cryptoToBuyData(_ data: DetailedCryptoModel)
+}
+
 class AddToPotfolioViewController: UIViewController {
     
     @IBOutlet weak var imgView: UIImageView!
@@ -18,15 +22,21 @@ class AddToPotfolioViewController: UIViewController {
     @IBOutlet weak var availableMoenyLable: UILabel!
     @IBOutlet weak var buyAmountLable: UILabel!
     
+    let detailedViewControler = DetailedCryptoViewController()
+    var cryptoData: DetailedCryptoModel?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        detailedViewControler.delegate = self
         view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        initalizeData()
         // Do any additional setup after loading the view.
     }
     
     @IBAction func cancleAction(_ sender: Any) {
+        print(cryptoData)
     }
     
     @IBAction func potfolioAction(_ sender: Any) {
@@ -36,14 +46,21 @@ class AddToPotfolioViewController: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func initalizeData() {
+        guard cryptoData != nil else { return }
+        
+        nameLable.text = cryptoData?.name
+        availableMoenyLable.text = "₹ 24305"
+        priceLable.text = "₹ \(String(format: "%.2f",  cryptoData?.marketData?.currentPrice?.inr ?? 0.0))"
+        buyAmountLable.text = "₹ 0"
+        imgView.setImageWithURL(cryptoData?.image?.large)
     }
-    */
+    
+}
 
+extension AddToPotfolioViewController: AddToPotfolioProtocal {
+    func cryptoToBuyData(_ data: DetailedCryptoModel) {
+        print("called")
+        print(data)
+    }
 }
