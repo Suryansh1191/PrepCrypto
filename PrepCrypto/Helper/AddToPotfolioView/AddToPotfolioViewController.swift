@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol AddToPotfolioProtocal {
-    func cryptoToBuyData(_ data: DetailedCryptoModel)
-}
 
 class AddToPotfolioViewController: UIViewController {
     
@@ -24,26 +21,22 @@ class AddToPotfolioViewController: UIViewController {
     
     let detailedViewControler = DetailedCryptoViewController()
     var cryptoData: DetailedCryptoModel?
+    var buyAmount = 0.0
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailedViewControler.delegate = self
+
         view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         initalizeData()
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func cancleAction(_ sender: Any) {
-        print(cryptoData)
-    }
+    @IBAction func cancleAction(_ sender: Any) {    }
     
     @IBAction func potfolioAction(_ sender: Any) {
-        
         self.dismiss(animated: true, completion: nil)
-
-        
     }
     
     func initalizeData() {
@@ -52,15 +45,19 @@ class AddToPotfolioViewController: UIViewController {
         nameLable.text = cryptoData?.name
         availableMoenyLable.text = "₹ 24305"
         priceLable.text = "₹ \(String(format: "%.2f",  cryptoData?.marketData?.currentPrice?.inr ?? 0.0))"
-        buyAmountLable.text = "₹ 0"
+        buyAmountLable.text = "C \(buyAmount)"
         imgView.setImageWithURL(cryptoData?.image?.large)
+        amountTextField.becomeFirstResponder()
     }
     
-}
-
-extension AddToPotfolioViewController: AddToPotfolioProtocal {
-    func cryptoToBuyData(_ data: DetailedCryptoModel) {
-        print("called")
-        print(data)
+    @IBAction func textFieldOnChange(_ sender: Any) {
+        print(buyAmount)
+        buyAmount = ( (Double(amountTextField.text ?? "0.0") ?? 0.0) / (cryptoData?.marketData?.currentPrice?.inr ?? 0.0))
+        print(buyAmount)
+        buyAmountLable.text = "C \(String(format: "%.2f", buyAmount))"
+        
     }
+    
+    
+    
 }

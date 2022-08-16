@@ -22,7 +22,7 @@ class DetailedCryptoViewController: UIViewController, ChartViewDelegate {
     
     var cryptoID: String? = "bitcoin"
     var cryptoData: DetailedCryptoModel? = nil
-    var delegate: AddToPotfolioProtocal?
+    var buyAmountText = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class DetailedCryptoViewController: UIViewController, ChartViewDelegate {
         getCryptoIDData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {        }
+    override func viewWillAppear(_ animated: Bool) {  }
     
     func setDataValue() {
         guard cryptoData != nil else { return }
@@ -117,19 +117,12 @@ class DetailedCryptoViewController: UIViewController, ChartViewDelegate {
         
         guard cryptoData != nil else { return }
         
-        print("called")
-        
-//        let vc = AddToPotfolioViewController()
-//        vc.modalTransitionStyle = .crossDissolve
-//        vc.modalPresentationStyle = .overCurrentContext
-//        present(vc, animated: true, completion: nil)
         let storyboard = UIStoryboard(name: "AddToPotfolio", bundle: nil)
         let myAlert = storyboard.instantiateViewController(withIdentifier: "addToPotfolioID") as! AddToPotfolioViewController
         myAlert.cryptoData = cryptoData
         myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.present(myAlert, animated: true, completion: nil)
-        delegate?.cryptoToBuyData(cryptoData!)
         
     }
     

@@ -148,19 +148,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Wi-Nd-E4h">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-6N-cFN">
-                                        <rect key="frame" x="197" y="377" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="Sm6-6N-cFN" firstAttribute="centerX" secondItem="4Wi-Nd-E4h" secondAttribute="centerX" id="dCr-Zi-dch"/>
-                                    <constraint firstItem="Sm6-6N-cFN" firstAttribute="centerY" secondItem="4Wi-Nd-E4h" secondAttribute="centerY" id="ihc-Y6-GBV"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSv-He-ikP">
                                 <rect key="frame" x="0.0" y="108" width="414" height="100"/>
                                 <subviews>
@@ -377,6 +364,19 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" image="bell.fill" catalog="system"/>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Wi-Nd-E4h">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-6N-cFN">
+                                        <rect key="frame" x="197" y="377" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Sm6-6N-cFN" firstAttribute="centerX" secondItem="4Wi-Nd-E4h" secondAttribute="centerX" id="dCr-Zi-dch"/>
+                                    <constraint firstItem="Sm6-6N-cFN" firstAttribute="centerY" secondItem="4Wi-Nd-E4h" secondAttribute="centerY" id="ihc-Y6-GBV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pSh-PL-tGB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
