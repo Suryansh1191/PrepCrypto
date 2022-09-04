@@ -2,7 +2,7 @@
 //  HistoryCD+CoreDataProperties.swift
 //  PrepCrypto
 //
-//  Created by suryansh Bisen on 04/09/22.
+//  Created by suryansh Bisen on 05/09/22.
 //
 //
 
@@ -22,6 +22,7 @@ extension HistoryCD {
     @NSManaged public var amountBuy: Double
     @NSManaged public var availableMoney: Double
     @NSManaged public var id: UUID?
+    @NSManaged public var date: Date?
     @NSManaged public var cryptoCD: CryptoCD?
 
 }

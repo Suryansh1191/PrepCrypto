@@ -9,22 +9,48 @@ import UIKit
 
 class PotfolioViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    var potfolioData = [PotfolioModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .brown
+        configureTableView()
+        getPotfolioData()
+        
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-    */
+    
+    func getPotfolioData() {
+        PotfolioCDRepositry.getAll { potfolioData in
+            self.potfolioData = potfolioData
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+}
 
+extension PotfolioViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return potfolioData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ConstentData.POTFOLIO_TABLEVIEW_CELL) as! PotfolioTableViewCell
+        
+        let data = potfolioData[indexPath.row]
+        
+        cell.setData(data: data)
+        
+        return cell
+    }
+    
+    
 }

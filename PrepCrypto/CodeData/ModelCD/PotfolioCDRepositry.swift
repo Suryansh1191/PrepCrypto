@@ -20,7 +20,7 @@ class PotfolioCDRepositry {
                 potfolioCD.holdingAmount = data.buyAmount
                 potfolioCD.buyRate = data.buyRate
                 potfolioCD.id = UUID()
-                potfolioCD.cryptoid = potfolioCD.cryptoCD?.idCrypto ?? ""
+                potfolioCD.cryptoid = data.cryptoModel?.id
                 print(potfolioCD.cryptoid)
                 
                 guard data.cryptoModel?.id != nil && data.cryptoModel != nil else { debugPrint("no cryptoID at 25"); return }
@@ -49,7 +49,7 @@ class PotfolioCDRepositry {
                 return
             }
             for i in 0...(result.count - 1) {
-                let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoID: result[i].cryptoCD?.idCrypto)
+                let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoID: result[i].cryptoid)
                 potfolioData.append(potfolioModel)
             }
             complition(potfolioData)

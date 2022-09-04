@@ -9,4 +9,5 @@ import Foundation
 
 class ConstentData {
     static let CRYPTO_TABLEVIEW_CELL = "CrytoTableViewCell"
+    static let POTFOLIO_TABLEVIEW_CELL = "PofolioTableViewCell"
 }

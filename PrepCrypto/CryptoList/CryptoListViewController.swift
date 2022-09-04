@@ -29,43 +29,51 @@ class CryptoListViewController: UIViewController {
     }
     
     func getCryptoData() {
-        let url = URL(string: "\(UrlContaner.crypto)/markets?vs_currency=inr")
-        
-        ApiNetworkCall.apiCall([CryptoListModel].self, url: URLRequest(url: url!)) { result in
-            switch result {
-            case .success(let data):
-                self.cryptodata = data
-                DispatchQueue.main.async {
-                    self.tabeView.reloadData()
-                    self.spinner.isHidden = true
-                }
-                
-                // CORE DATA WORK
-                CryptoDataRepositry.entityIsEmpty { status in
-                    if status {
-                        CryptoDataRepositry.create(data: data) { }
-                    }else{
-                        //TODO: UPDATE DATA
-                    }
-                }
-                
-            case .failure(let error):
-                //TODO: Notify NO internet
-                
-                CryptoDataRepositry.getAll { data in
-                    self.cryptodata = data
-                    DispatchQueue.main.async {
-                        self.tabeView.reloadData()
-                        self.spinner.isHidden = true
-                    }
-                }
-                //error handling
-                print(error)
+        if CryptoDataContainer.data.count != 0 {
+            self.cryptodata = CryptoDataContainer.data
+            DispatchQueue.main.async {
+                self.tabeView.reloadData()
+                self.spinner.isHidden = true
             }
         }
     }
+//        let url = URL(string: "\(UrlContaner.crypto)/markets?vs_currency=inr")
+//
+//        ApiNetworkCall.apiCall([CryptoListModel].self, url: URLRequest(url: url!)) { result in
+//            switch result {
+//            case .success(let data):
+//                self.cryptodata = data
+//                DispatchQueue.main.async {
+//                    self.tabeView.reloadData()
+//                    self.spinner.isHidden = true
+//                }
+//
+//                // CORE DATA WORK
+//                CryptoDataRepositry.entityIsEmpty { status in
+//                    if status {
+//                        CryptoDataRepositry.create(data: data) { }
+//                    }else{
+//                        //TODO: UPDATE DATA
+//                    }
+//                }
+//
+//            case .failure(let error):
+//                //TODO: Notify NO internet
+//
+//                CryptoDataRepositry.getAll { data in
+//                    self.cryptodata = data
+//                    DispatchQueue.main.async {
+//                        self.tabeView.reloadData()
+//                        self.spinner.isHidden = true
+//                    }
+//                }
+//                //error handling
+//                print(error)
+//            }
+        
+    }
 
-}
+
 
 //MARK: TableView
 extension CryptoListViewController: UITableViewDelegate, UITableViewDataSource {
