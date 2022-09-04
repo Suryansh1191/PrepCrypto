@@ -33,10 +33,19 @@ class AddToPotfolioViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func cancleAction(_ sender: Any) {    }
+    @IBAction func cancleAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        
+    }
     
     @IBAction func potfolioAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        let potfolioDM = PotfolioModel(buyAmount: buyAmount, buyRate: cryptoData?.marketData?.currentPrice?.inr ?? 0.0, cryptoModel: cryptoData!) //force unwraping because we have guard statment in initalizeData() 
+        PotfolioCDRepositry.create(data: potfolioDM) {
+            self.dismiss(animated: true, completion: nil)
+            PotfolioCDRepositry.getAll { data in
+                print(data)
+            }
+        }
     }
     
     func initalizeData() {
@@ -55,7 +64,6 @@ class AddToPotfolioViewController: UIViewController {
         buyAmount = ( (Double(amountTextField.text ?? "0.0") ?? 0.0) / (cryptoData?.marketData?.currentPrice?.inr ?? 0.0))
         print(buyAmount)
         buyAmountLable.text = "C \(String(format: "%.2f", buyAmount))"
-        
     }
     
     

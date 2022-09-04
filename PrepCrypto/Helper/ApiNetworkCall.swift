@@ -15,11 +15,6 @@ class ApiNetworkCall {
         
         let dataTask = session.dataTask(with: url) { data, response, error in
             
-            if error != nil || data == nil {
-                print("API ERROR")
-                return
-            }
-            
             print(data?.description as Any)
             print(data.debugDescription)
             
