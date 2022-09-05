@@ -11,5 +11,6 @@ struct PotfolioModel{
     var buyAmount: Double
     var buyRate: Double
     var cryptoModel: DetailedCryptoModel?
+    var cryptoCD: CryptoCD?
     var cryptoID: String?
 }

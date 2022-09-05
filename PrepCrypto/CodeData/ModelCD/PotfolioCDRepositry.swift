@@ -29,6 +29,10 @@ class PotfolioCDRepositry {
                     print(cryptoCD)
                     potfolioCD.cryptoCD = cryptoCD
                     PersistantStorage.shared.saveContext()
+                    
+                    //Adding History
+                    HistoryCDRepository.addData(data: data, sellingRate: nil) {    }
+                    
                     complition()
                 }
             } else {
@@ -49,14 +53,14 @@ class PotfolioCDRepositry {
                 return
             }
             for i in 0...(result.count - 1) {
-                let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoID: result[i].cryptoid)
+                let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoCD: result[i].cryptoCD, cryptoID: result[i].cryptoid)
                 potfolioData.append(potfolioModel)
             }
             complition(potfolioData)
         }catch{
             complition(potfolioData)
             return
-        }
+        } 
         
     }
     
