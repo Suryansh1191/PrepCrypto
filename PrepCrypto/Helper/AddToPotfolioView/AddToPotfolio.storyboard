@@ -122,6 +122,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6RY-Uz-tEM">
+                                        <rect key="frame" x="90" y="336" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
@@ -132,6 +138,7 @@
                                     <constraint firstAttribute="trailing" secondItem="f38-fl-9r0" secondAttribute="trailing" constant="25" id="8qZ-Mf-Jfn"/>
                                     <constraint firstItem="QqN-6r-KfP" firstAttribute="top" secondItem="lwd-k6-cIG" secondAttribute="bottom" constant="2" id="9QO-b6-KZS"/>
                                     <constraint firstItem="o0k-DZ-1f6" firstAttribute="centerX" secondItem="VMa-9M-fdX" secondAttribute="centerX" id="9l2-sc-JWL"/>
+                                    <constraint firstItem="6RY-Uz-tEM" firstAttribute="top" secondItem="Mnn-rI-3Eq" secondAttribute="bottom" constant="1" id="A3q-6Y-aY2"/>
                                     <constraint firstAttribute="trailing" secondItem="Mnn-rI-3Eq" secondAttribute="trailing" constant="30" id="BZ0-V8-4UM"/>
                                     <constraint firstItem="QQz-RA-hVv" firstAttribute="leading" secondItem="VMa-9M-fdX" secondAttribute="leading" id="Cue-jz-Cki"/>
                                     <constraint firstAttribute="bottom" secondItem="QQz-RA-hVv" secondAttribute="bottom" constant="5" id="Dpn-bg-Ik3"/>
@@ -144,6 +151,7 @@
                                     <constraint firstItem="dPn-wW-U1n" firstAttribute="top" secondItem="do6-rW-pJU" secondAttribute="bottom" constant="25" id="TJW-Oc-kdU"/>
                                     <constraint firstItem="QQz-RA-hVv" firstAttribute="top" secondItem="Mnn-rI-3Eq" secondAttribute="bottom" constant="10" id="XTW-Kz-qUO"/>
                                     <constraint firstAttribute="trailing" secondItem="QQz-RA-hVv" secondAttribute="trailing" id="bn3-0J-csD"/>
+                                    <constraint firstItem="6RY-Uz-tEM" firstAttribute="leading" secondItem="Mnn-rI-3Eq" secondAttribute="leading" constant="1.5" id="eGp-cx-R5v"/>
                                     <constraint firstItem="4GG-nj-q0f" firstAttribute="centerX" secondItem="f38-fl-9r0" secondAttribute="centerX" id="ewf-7K-oh9"/>
                                     <constraint firstItem="dPn-wW-U1n" firstAttribute="centerX" secondItem="VMa-9M-fdX" secondAttribute="centerX" id="ff4-Ef-keg"/>
                                     <constraint firstItem="lwd-k6-cIG" firstAttribute="centerX" secondItem="QqN-6r-KfP" secondAttribute="centerX" id="j5I-zV-TD5"/>
@@ -177,6 +185,7 @@
                         <outlet property="imgView" destination="dPn-wW-U1n" id="plB-Bx-vmr"/>
                         <outlet property="nameLable" destination="FSd-NF-VzS" id="bO1-o5-Trh"/>
                         <outlet property="priceLable" destination="o0k-DZ-1f6" id="N1U-UP-tua"/>
+                        <outlet property="warningLable" destination="6RY-Uz-tEM" id="4FI-T1-BA0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -190,6 +199,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

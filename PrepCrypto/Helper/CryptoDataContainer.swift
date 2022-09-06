@@ -21,6 +21,7 @@ class CryptoDataContainer{
                 CryptoDataRepositry.entityIsEmpty { status in
                     if status {
                         CryptoDataRepositry.create(data: data) { }
+                        MoenyCDRepository.createData {  }
                     }else{
                         //TODO: UPDATE DATA
                     }

@@ -2,7 +2,7 @@
 //  PotfolioCD+CoreDataProperties.swift
 //  PrepCrypto
 //
-//  Created by suryansh Bisen on 04/09/22.
+//  Created by suryansh Bisen on 06/09/22.
 //
 //
 
@@ -20,6 +20,7 @@ extension PotfolioCD {
     @NSManaged public var buyRate: Double
     @NSManaged public var id: UUID?
     @NSManaged public var cryptoid: String?
+    @NSManaged public var moneyLeft: Double
     @NSManaged public var cryptoCD: CryptoCD?
 
 }

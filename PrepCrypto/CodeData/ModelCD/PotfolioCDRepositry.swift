@@ -21,7 +21,6 @@ class PotfolioCDRepositry {
                 potfolioCD.buyRate = data.buyRate
                 potfolioCD.id = UUID()
                 potfolioCD.cryptoid = data.cryptoModel?.id
-                print(potfolioCD.cryptoid)
                 
                 guard data.cryptoModel?.id != nil && data.cryptoModel != nil else { debugPrint("no cryptoID at 25"); return }
                 
@@ -31,7 +30,7 @@ class PotfolioCDRepositry {
                     PersistantStorage.shared.saveContext()
                     
                     //Adding History
-                    HistoryCDRepository.addData(data: data, sellingRate: nil) {    }
+                    HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD, sellingRate: nil) {    }
                     
                     complition()
                 }
@@ -53,7 +52,7 @@ class PotfolioCDRepositry {
                 return
             }
             for i in 0...(result.count - 1) {
-                let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoCD: result[i].cryptoCD, cryptoID: result[i].cryptoid)
+                let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoCD: result[i].cryptoCD, cryptoID: result[i].cryptoid, moneyLeft: result[i].moneyLeft)
                 potfolioData.append(potfolioModel)
             }
             complition(potfolioData)

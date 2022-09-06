@@ -18,10 +18,12 @@ class AddToPotfolioViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var availableMoenyLable: UILabel!
     @IBOutlet weak var buyAmountLable: UILabel!
+    @IBOutlet weak var warningLable: UILabel!
     
     let detailedViewControler = DetailedCryptoViewController()
     var cryptoData: DetailedCryptoModel?
     var buyAmount = 0.0
+    var availableMoney = 0.0
     
 
     override func viewDidLoad() {
@@ -30,6 +32,9 @@ class AddToPotfolioViewController: UIViewController {
 
         view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         initalizeData()
+        MoenyCDRepository.getData { moneyCD in
+            self.availableMoney = moneyCD.avalableMoney
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -39,7 +44,13 @@ class AddToPotfolioViewController: UIViewController {
     }
     
     @IBAction func potfolioAction(_ sender: Any) {
-        let potfolioDM = PotfolioModel(buyAmount: buyAmount, buyRate: cryptoData?.marketData?.currentPrice?.inr ?? 0.0, cryptoModel: cryptoData!) //force unwraping because we have guard statment in initalizeData() 
+        
+        if buyAmount > availableMoney {
+            warningLable.text = "You only have ₹\(availableMoney) in you balance"
+            return 
+        }
+        
+        let potfolioDM = PotfolioModel(buyAmount: buyAmount, buyRate: cryptoData?.marketData?.currentPrice?.inr ?? 0.0, cryptoModel: cryptoData!, moneyLeft: 0.0) //force unwraping because we have guard statment in initalizeData()
         PotfolioCDRepositry.create(data: potfolioDM) {
             self.dismiss(animated: true, completion: nil)
             PotfolioCDRepositry.getAll { data in
@@ -52,7 +63,7 @@ class AddToPotfolioViewController: UIViewController {
         guard cryptoData != nil else { return }
         
         nameLable.text = cryptoData?.name
-        availableMoenyLable.text = "₹ 24305"
+        availableMoenyLable.text = "₹ \(String(availableMoney))"
         priceLable.text = "₹ \(String(format: "%.2f",  cryptoData?.marketData?.currentPrice?.inr ?? 0.0))"
         buyAmountLable.text = "C \(buyAmount)"
         imgView.setImageWithURL(cryptoData?.image?.large)

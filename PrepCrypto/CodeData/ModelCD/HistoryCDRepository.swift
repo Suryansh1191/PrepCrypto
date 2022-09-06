@@ -9,7 +9,7 @@ import Foundation
 
 class HistoryCDRepository{
     
-    static func addData(data: PotfolioModel, sellingRate: Double?, complition: @escaping ()->Void){
+    static func addData(data: PotfolioModel, cryptoCD: CryptoCD, sellingRate: Double?, complition: @escaping ()->Void){
         let historyCD = HistoryCD(context: PersistantStorage.shared.context)
         
         historyCD.buyRate = data.buyRate
@@ -21,9 +21,10 @@ class HistoryCDRepository{
         if sellingRate != nil {
             historyCD.sellRate = sellingRate!
         }
-        
-        
+        historyCD.cryptoCD = cryptoCD
         PersistantStorage.shared.saveContext()
+
+        complition()
     }
     
     static func getAllData(complition: @escaping ([HistoryModel])->Void){

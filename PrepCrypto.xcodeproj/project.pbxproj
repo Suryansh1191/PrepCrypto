@@ -24,6 +24,10 @@
 		E450428828C5287600D28C57 /* PotfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450428728C5287600D28C57 /* PotfolioTableViewCell.swift */; };
 		E450428A28C5380100D28C57 /* CryptoDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450428928C5380100D28C57 /* CryptoDataContainer.swift */; };
 		E450428C28C53BD000D28C57 /* HistoryCDRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450428B28C53BD000D28C57 /* HistoryCDRepository.swift */; };
+		E450429228C789DF00D28C57 /* MoneyCDRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429128C789DF00D28C57 /* MoneyCDRepository.swift */; };
+		E450429728C78AF300D28C57 /* MoneyCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429528C78AF300D28C57 /* MoneyCD+CoreDataClass.swift */; };
+		E450429828C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429628C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift */; };
+		E450429A28C78F5A00D28C57 /* MoneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429928C78F5A00D28C57 /* MoneyModel.swift */; };
 		E475E49628A80CC00074889F /* extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E49528A80CC00074889F /* extentions.swift */; };
 		E475E49928AA3A800074889F /* AddToPotfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E475E49828AA3A800074889F /* AddToPotfolio.storyboard */; };
 		E475E49B28AA3AA20074889F /* AddToPotfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E49A28AA3AA20074889F /* AddToPotfolioViewController.swift */; };
@@ -90,6 +94,10 @@
 		E450428728C5287600D28C57 /* PotfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotfolioTableViewCell.swift; sourceTree = "<group>"; };
 		E450428928C5380100D28C57 /* CryptoDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDataContainer.swift; sourceTree = "<group>"; };
 		E450428B28C53BD000D28C57 /* HistoryCDRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCDRepository.swift; sourceTree = "<group>"; };
+		E450429128C789DF00D28C57 /* MoneyCDRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCDRepository.swift; sourceTree = "<group>"; };
+		E450429528C78AF300D28C57 /* MoneyCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoneyCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		E450429628C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoneyCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E450429928C78F5A00D28C57 /* MoneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyModel.swift; sourceTree = "<group>"; };
 		E475E49528A80CC00074889F /* extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extentions.swift; sourceTree = "<group>"; };
 		E475E49828AA3A800074889F /* AddToPotfolio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddToPotfolio.storyboard; sourceTree = "<group>"; };
 		E475E49A28AA3AA20074889F /* AddToPotfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPotfolioViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +180,8 @@
 		E450423A28C26FAB00D28C57 /* ModelCD */ = {
 			isa = PBXGroup;
 			children = (
+				E450429528C78AF300D28C57 /* MoneyCD+CoreDataClass.swift */,
+				E450429628C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift */,
 				E450427628C4840500D28C57 /* PotfolioCD+CoreDataClass.swift */,
 				E450427728C4840500D28C57 /* PotfolioCD+CoreDataProperties.swift */,
 				E450427828C4840500D28C57 /* CryptoCD+CoreDataClass.swift */,
@@ -181,6 +191,7 @@
 				E450427228C4660000D28C57 /* PotfolioCDRepositry.swift */,
 				E450423628C11FFD00D28C57 /* CryptoRepository.swift */,
 				E450428B28C53BD000D28C57 /* HistoryCDRepository.swift */,
+				E450429128C789DF00D28C57 /* MoneyCDRepository.swift */,
 				E450428228C4894D00D28C57 /* DataModel */,
 			);
 			path = ModelCD;
@@ -191,6 +202,7 @@
 			children = (
 				E450428328C4897700D28C57 /* PotfolioModel.swift */,
 				E450428528C4899000D28C57 /* HistoryModel.swift */,
+				E450429928C78F5A00D28C57 /* MoneyModel.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -565,12 +577,15 @@
 			files = (
 				E450428028C4840500D28C57 /* HistoryCD+CoreDataClass.swift in Sources */,
 				E450428428C4897700D28C57 /* PotfolioModel.swift in Sources */,
+				E450429828C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift in Sources */,
 				E49CE5F128A7AB46001EB99C /* DetailedCryptoModel.swift in Sources */,
 				E49CE5E628A671BD001EB99C /* CrytoTableViewCell.swift in Sources */,
 				E49CE5AB28A63336001EB99C /* ViewController.swift in Sources */,
 				E49CE5A728A63336001EB99C /* AppDelegate.swift in Sources */,
 				E450427E28C4840500D28C57 /* CryptoCD+CoreDataClass.swift in Sources */,
 				E450427D28C4840500D28C57 /* PotfolioCD+CoreDataProperties.swift in Sources */,
+				E450429228C789DF00D28C57 /* MoneyCDRepository.swift in Sources */,
+				E450429728C78AF300D28C57 /* MoneyCD+CoreDataClass.swift in Sources */,
 				E450428A28C5380100D28C57 /* CryptoDataContainer.swift in Sources */,
 				E450423928C1358A00D28C57 /* PersistantStorage.swift in Sources */,
 				E49CE5E828A6730D001EB99C /* UrlContaner.swift in Sources */,
@@ -588,6 +603,7 @@
 				E450428128C4840500D28C57 /* HistoryCD+CoreDataProperties.swift in Sources */,
 				E450428628C4899000D28C57 /* HistoryModel.swift in Sources */,
 				E450427C28C4840500D28C57 /* PotfolioCD+CoreDataClass.swift in Sources */,
+				E450429A28C78F5A00D28C57 /* MoneyModel.swift in Sources */,
 				E49CE5EA28A6769B001EB99C /* ApiNetworkCall.swift in Sources */,
 				E475E49628A80CC00074889F /* extentions.swift in Sources */,
 				E49CE5B128A63336001EB99C /* PrepCrypto.xcdatamodeld in Sources */,
