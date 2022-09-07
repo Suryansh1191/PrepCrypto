@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import CoreData
 
 
-class MoenyCDRepository{
+class MoneyCDRepository{
     
     static func getData(complition: @escaping (MoneyModel) -> Void){
         var moneyModel = MoneyModel(totalMoney: 0.0, avalableMoney: 0.0)
@@ -36,11 +37,24 @@ class MoenyCDRepository{
         
         PersistantStorage.shared.saveContext()
         
+        
         comlition()
     }
     
-    static func editData(data: MoneyCD, complition: @escaping () -> Void){
-        //TODO: EDIT DATA
+    static func editData(moneySpent: Double, complition: @escaping () -> Void){
+        
+        let fetchRequest = NSFetchRequest<MoneyCD>(entityName: "MoneyCD")
+        let fetchByID = NSPredicate(format: "id=%@", "main" as CVarArg)
+        fetchRequest.predicate = fetchByID
+        
+        let result = try! PersistantStorage.shared.context.fetch(fetchRequest)
+        
+        let data = result.first!
+        
+        data.availableMoney = (data.availableMoney - moneySpent)
+        
+        PersistantStorage.shared.saveContext()
+        
     }
     
 }

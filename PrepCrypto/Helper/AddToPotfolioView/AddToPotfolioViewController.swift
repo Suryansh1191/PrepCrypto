@@ -31,10 +31,11 @@ class AddToPotfolioViewController: UIViewController {
         
 
         view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        initalizeData()
-        MoenyCDRepository.getData { moneyCD in
+        MoneyCDRepository.getData { moneyCD in
+            print(moneyCD.avalableMoney)
             self.availableMoney = moneyCD.avalableMoney
         }
+        initalizeData()
         // Do any additional setup after loading the view.
     }
     
@@ -50,7 +51,7 @@ class AddToPotfolioViewController: UIViewController {
             return 
         }
         
-        let potfolioDM = PotfolioModel(buyAmount: buyAmount, buyRate: cryptoData?.marketData?.currentPrice?.inr ?? 0.0, cryptoModel: cryptoData!, moneyLeft: 0.0) //force unwraping because we have guard statment in initalizeData()
+        let potfolioDM = PotfolioModel(buyAmount: (Double(amountTextField.text ?? "0.0") ?? 0.0), buyRate: cryptoData?.marketData?.currentPrice?.inr ?? 0.0, cryptoModel: cryptoData!, moneyLeft: 0.0) //force unwraping because we have guard statment in initalizeData()
         PotfolioCDRepositry.create(data: potfolioDM) {
             self.dismiss(animated: true, completion: nil)
             PotfolioCDRepositry.getAll { data in

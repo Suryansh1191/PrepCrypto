@@ -12,7 +12,7 @@ class PotfolioCDRepositry {
     
     static func create(data: PotfolioModel, complition: @escaping () -> Void){
         
-        self.getById(id: (data.cryptoModel?.id)!, complition: { PotfolioData, count in
+        self.getById(id: (data.cryptoModel?.id)!, complition: { potfolioData, count in
             if (count == 0) { //Creating when not added to potfolio before
                 
                 let potfolioCD = PotfolioCD(context: PersistantStorage.shared.context)
@@ -25,18 +25,36 @@ class PotfolioCDRepositry {
                 guard data.cryptoModel?.id != nil && data.cryptoModel != nil else { debugPrint("no cryptoID at 25"); return }
                 
                 CryptoDataRepositry.getByID(cryptoID: (data.cryptoModel?.id!)!) { cryptoCD in
-                    print(cryptoCD)
+                    
                     potfolioCD.cryptoCD = cryptoCD
                     PersistantStorage.shared.saveContext()
                     
-                    //Adding History
-                    HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD, sellingRate: nil) {    }
+                    //UPDATE BALANCE
+                    MoneyCDRepository.editData(moneySpent: data.buyAmount) {
+                        
+                        //Adding History
+                        HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingRate: nil) {    }
+                        
+                    }
+                    
+                    
                     
                     complition()
                 }
             } else {
-                print("lnas;dk")
-                //TODO: UPDATE INFO
+                potfolioData!.holdingAmount = (potfolioData!.holdingAmount + data.buyAmount)
+                potfolioData!.buyRate = data.buyRate
+                PersistantStorage.shared.saveContext()
+                
+                //UPDATE BALANCE
+                MoneyCDRepository.editData(moneySpent: data.buyAmount) {
+                    
+                    //Adding History
+                    HistoryCDRepository.addData(data: data, cryptoCD: (potfolioData?.cryptoCD!)!, sellingRate: nil) {    }
+                    
+                }
+                
+                complition()
             }
         })
         
@@ -51,6 +69,9 @@ class PotfolioCDRepositry {
                 complition(potfolioData)
                 return
             }
+            
+            guard result.count > 0 else { complition(potfolioData); return }
+            
             for i in 0...(result.count - 1) {
                 let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoCD: result[i].cryptoCD, cryptoID: result[i].cryptoid, moneyLeft: result[i].moneyLeft)
                 potfolioData.append(potfolioModel)

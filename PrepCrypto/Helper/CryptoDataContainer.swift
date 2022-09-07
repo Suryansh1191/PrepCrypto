@@ -15,16 +15,26 @@ class CryptoDataContainer{
         ApiNetworkCall.apiCall([CryptoListModel].self, url: URLRequest(url: url!)) { result in
             switch result {
             case .success(let data):
-                CryptoDataContainer.data = data
                 
                 // CORE DATA WORK
                 CryptoDataRepositry.entityIsEmpty { status in
                     if status {
-                        CryptoDataRepositry.create(data: data) { }
-                        MoenyCDRepository.createData {  }
+                        CryptoDataRepositry.create(data: data) {
+                            MoneyCDRepository.createData {
+                                CryptoDataRepositry.getAll { cryptoCD in
+                                    CryptoDataContainer.data = cryptoCD
+                                }
+                            }
+                        }
+                        
                     }else{
-                        //TODO: UPDATE DATA
+                        CryptoDataRepositry.updateData(data: data) {
+                            CryptoDataRepositry.getAll { cryptoCD in
+                                CryptoDataContainer.data = cryptoCD
+                            }
+                        }
                     }
+                    
                 }
                 
             case .failure(let error):

@@ -28,6 +28,7 @@
 		E450429728C78AF300D28C57 /* MoneyCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429528C78AF300D28C57 /* MoneyCD+CoreDataClass.swift */; };
 		E450429828C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429628C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift */; };
 		E450429A28C78F5A00D28C57 /* MoneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429928C78F5A00D28C57 /* MoneyModel.swift */; };
+		E450429D28C7D5B200D28C57 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429C28C7D5B200D28C57 /* HistoryTableViewCell.swift */; };
 		E475E49628A80CC00074889F /* extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E49528A80CC00074889F /* extentions.swift */; };
 		E475E49928AA3A800074889F /* AddToPotfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E475E49828AA3A800074889F /* AddToPotfolio.storyboard */; };
 		E475E49B28AA3AA20074889F /* AddToPotfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E49A28AA3AA20074889F /* AddToPotfolioViewController.swift */; };
@@ -98,6 +99,7 @@
 		E450429528C78AF300D28C57 /* MoneyCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoneyCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E450429628C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoneyCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		E450429928C78F5A00D28C57 /* MoneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyModel.swift; sourceTree = "<group>"; };
+		E450429C28C7D5B200D28C57 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		E475E49528A80CC00074889F /* extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extentions.swift; sourceTree = "<group>"; };
 		E475E49828AA3A800074889F /* AddToPotfolio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddToPotfolio.storyboard; sourceTree = "<group>"; };
 		E475E49A28AA3AA20074889F /* AddToPotfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPotfolioViewController.swift; sourceTree = "<group>"; };
@@ -188,10 +190,7 @@
 				E450427928C4840500D28C57 /* CryptoCD+CoreDataProperties.swift */,
 				E450427A28C4840500D28C57 /* HistoryCD+CoreDataClass.swift */,
 				E450427B28C4840500D28C57 /* HistoryCD+CoreDataProperties.swift */,
-				E450427228C4660000D28C57 /* PotfolioCDRepositry.swift */,
-				E450423628C11FFD00D28C57 /* CryptoRepository.swift */,
-				E450428B28C53BD000D28C57 /* HistoryCDRepository.swift */,
-				E450429128C789DF00D28C57 /* MoneyCDRepository.swift */,
+				E450429B28C7C07C00D28C57 /* CDRepository */,
 				E450428228C4894D00D28C57 /* DataModel */,
 			);
 			path = ModelCD;
@@ -205,6 +204,17 @@
 				E450429928C78F5A00D28C57 /* MoneyModel.swift */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		E450429B28C7C07C00D28C57 /* CDRepository */ = {
+			isa = PBXGroup;
+			children = (
+				E450423628C11FFD00D28C57 /* CryptoRepository.swift */,
+				E450427228C4660000D28C57 /* PotfolioCDRepositry.swift */,
+				E450428B28C53BD000D28C57 /* HistoryCDRepository.swift */,
+				E450429128C789DF00D28C57 /* MoneyCDRepository.swift */,
+			);
+			path = CDRepository;
 			sourceTree = "<group>";
 		};
 		E475E49728AA39EB0074889F /* AddToPotfolioView */ = {
@@ -299,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				E49CE5E028A668BD001EB99C /* HistoryViewController.swift */,
+				E450429C28C7D5B200D28C57 /* HistoryTableViewCell.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -584,6 +595,7 @@
 				E49CE5A728A63336001EB99C /* AppDelegate.swift in Sources */,
 				E450427E28C4840500D28C57 /* CryptoCD+CoreDataClass.swift in Sources */,
 				E450427D28C4840500D28C57 /* PotfolioCD+CoreDataProperties.swift in Sources */,
+				E450429D28C7D5B200D28C57 /* HistoryTableViewCell.swift in Sources */,
 				E450429228C789DF00D28C57 /* MoneyCDRepository.swift in Sources */,
 				E450429728C78AF300D28C57 /* MoneyCD+CoreDataClass.swift in Sources */,
 				E450428A28C5380100D28C57 /* CryptoDataContainer.swift in Sources */,

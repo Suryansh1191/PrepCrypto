@@ -15,13 +15,16 @@ class HistoryCDRepository{
         historyCD.buyRate = data.buyRate
         historyCD.idCrypto = data.cryptoID
         historyCD.amountBuy = data.buyAmount
-        historyCD.availableMoney = 0.0
         historyCD.date = Date()
         historyCD.id = UUID()
         if sellingRate != nil {
             historyCD.sellRate = sellingRate!
         }
         historyCD.cryptoCD = cryptoCD
+        MoneyCDRepository.getData { balanceData in
+            historyCD.availableMoney = balanceData.avalableMoney
+        }
+        
         PersistantStorage.shared.saveContext()
 
         complition()

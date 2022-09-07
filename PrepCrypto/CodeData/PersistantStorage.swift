@@ -58,17 +58,21 @@ final class PersistantStorage {
         }
     }
     
-    public func clearDatabase() {
-        guard let url = persistentContainer.persistentStoreDescriptions.first?.url else { return }
-        
-        let persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
+    func deleteAllEntities() {
+        let entities = PersistantStorage.shared.persistentContainer.managedObjectModel.entities
+        for entity in entities {
+            PersistantStorage.shared.delete(entityName: entity.name!)
+        }
+    }
 
-         do {
-             try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
-             try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
-         } catch {
-             print("Attempted to clear persistent store: " + error.localizedDescription)
-         }
+    func delete(entityName: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try persistentContainer.viewContext.execute(deleteRequest)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
     }
     
 }

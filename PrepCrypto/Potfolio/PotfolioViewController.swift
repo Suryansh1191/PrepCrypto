@@ -16,9 +16,13 @@ class PotfolioViewController: UIViewController {
         super.viewDidLoad()
         
         configureTableView()
-        getPotfolioData()
+        
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getPotfolioData()
     }
     
     func configureTableView() {
@@ -29,6 +33,7 @@ class PotfolioViewController: UIViewController {
     func getPotfolioData() {
         PotfolioCDRepositry.getAll { potfolioData in
             self.potfolioData = potfolioData
+            if potfolioData.count == 0 { return }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -46,6 +51,7 @@ extension PotfolioViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ConstentData.POTFOLIO_TABLEVIEW_CELL) as! PotfolioTableViewCell
         
         let data = potfolioData[indexPath.row]
+        
         
         cell.setData(data: data)
         

@@ -15,9 +15,6 @@ class ApiNetworkCall {
         
         let dataTask = session.dataTask(with: url) { data, response, error in
             
-            print(data?.description as Any)
-            print(data.debugDescription)
-            
             do{
                 let deocder = JSONDecoder()
                 let decodableResponce = try deocder.decode(type.self, from: data!)
@@ -26,6 +23,7 @@ class ApiNetworkCall {
                 
                 print(decodableResponce)
             }catch{
+                print("error")
                 print(error)
                 complition(Result.failure(error))
             }
