@@ -29,6 +29,9 @@
 		E450429828C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429628C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift */; };
 		E450429A28C78F5A00D28C57 /* MoneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429928C78F5A00D28C57 /* MoneyModel.swift */; };
 		E450429D28C7D5B200D28C57 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429C28C7D5B200D28C57 /* HistoryTableViewCell.swift */; };
+		E45042A028C8B29A00D28C57 /* PotfolioDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450429F28C8B29900D28C57 /* PotfolioDetailedViewController.swift */; };
+		E45042A328C9BCEF00D28C57 /* SellPotfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45042A228C9BCEF00D28C57 /* SellPotfolioViewController.swift */; };
+		E45042A528C9BD1900D28C57 /* SellPotfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E45042A428C9BD1900D28C57 /* SellPotfolio.storyboard */; };
 		E475E49628A80CC00074889F /* extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E49528A80CC00074889F /* extentions.swift */; };
 		E475E49928AA3A800074889F /* AddToPotfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E475E49828AA3A800074889F /* AddToPotfolio.storyboard */; };
 		E475E49B28AA3AA20074889F /* AddToPotfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E49A28AA3AA20074889F /* AddToPotfolioViewController.swift */; };
@@ -100,6 +103,9 @@
 		E450429628C78AF300D28C57 /* MoneyCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoneyCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		E450429928C78F5A00D28C57 /* MoneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyModel.swift; sourceTree = "<group>"; };
 		E450429C28C7D5B200D28C57 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		E450429F28C8B29900D28C57 /* PotfolioDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotfolioDetailedViewController.swift; sourceTree = "<group>"; };
+		E45042A228C9BCEF00D28C57 /* SellPotfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellPotfolioViewController.swift; sourceTree = "<group>"; };
+		E45042A428C9BD1900D28C57 /* SellPotfolio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SellPotfolio.storyboard; sourceTree = "<group>"; };
 		E475E49528A80CC00074889F /* extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extentions.swift; sourceTree = "<group>"; };
 		E475E49828AA3A800074889F /* AddToPotfolio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddToPotfolio.storyboard; sourceTree = "<group>"; };
 		E475E49A28AA3AA20074889F /* AddToPotfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPotfolioViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +223,23 @@
 			path = CDRepository;
 			sourceTree = "<group>";
 		};
+		E450429E28C8B25300D28C57 /* DetailedPotfolio */ = {
+			isa = PBXGroup;
+			children = (
+				E450429F28C8B29900D28C57 /* PotfolioDetailedViewController.swift */,
+			);
+			path = DetailedPotfolio;
+			sourceTree = "<group>";
+		};
+		E45042A128C9BCBE00D28C57 /* SellPotfolioView */ = {
+			isa = PBXGroup;
+			children = (
+				E45042A228C9BCEF00D28C57 /* SellPotfolioViewController.swift */,
+				E45042A428C9BD1900D28C57 /* SellPotfolio.storyboard */,
+			);
+			path = SellPotfolioView;
+			sourceTree = "<group>";
+		};
 		E475E49728AA39EB0074889F /* AddToPotfolioView */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +322,7 @@
 		E49CE5DA28A66777001EB99C /* Potfolio */ = {
 			isa = PBXGroup;
 			children = (
+				E450429E28C8B25300D28C57 /* DetailedPotfolio */,
 				E49CE5DE28A668A4001EB99C /* PotfolioViewController.swift */,
 				E450428728C5287600D28C57 /* PotfolioTableViewCell.swift */,
 			);
@@ -317,6 +341,7 @@
 		E49CE5E228A670D5001EB99C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				E45042A128C9BCBE00D28C57 /* SellPotfolioView */,
 				E475E49728AA39EB0074889F /* AddToPotfolioView */,
 				E49CE5E328A670E7001EB99C /* Contants.swift */,
 				E49CE5E728A6730D001EB99C /* UrlContaner.swift */,
@@ -457,6 +482,7 @@
 			files = (
 				E49CE5B628A6333C001EB99C /* LaunchScreen.storyboard in Resources */,
 				E49CE5B328A6333C001EB99C /* Assets.xcassets in Resources */,
+				E45042A528C9BD1900D28C57 /* SellPotfolio.storyboard in Resources */,
 				E49CE5AE28A63336001EB99C /* Main.storyboard in Resources */,
 				E475E49928AA3A800074889F /* AddToPotfolio.storyboard in Resources */,
 			);
@@ -592,6 +618,7 @@
 				E49CE5F128A7AB46001EB99C /* DetailedCryptoModel.swift in Sources */,
 				E49CE5E628A671BD001EB99C /* CrytoTableViewCell.swift in Sources */,
 				E49CE5AB28A63336001EB99C /* ViewController.swift in Sources */,
+				E45042A028C8B29A00D28C57 /* PotfolioDetailedViewController.swift in Sources */,
 				E49CE5A728A63336001EB99C /* AppDelegate.swift in Sources */,
 				E450427E28C4840500D28C57 /* CryptoCD+CoreDataClass.swift in Sources */,
 				E450427D28C4840500D28C57 /* PotfolioCD+CoreDataProperties.swift in Sources */,
@@ -599,6 +626,7 @@
 				E450429228C789DF00D28C57 /* MoneyCDRepository.swift in Sources */,
 				E450429728C78AF300D28C57 /* MoneyCD+CoreDataClass.swift in Sources */,
 				E450428A28C5380100D28C57 /* CryptoDataContainer.swift in Sources */,
+				E45042A328C9BCEF00D28C57 /* SellPotfolioViewController.swift in Sources */,
 				E450423928C1358A00D28C57 /* PersistantStorage.swift in Sources */,
 				E49CE5E828A6730D001EB99C /* UrlContaner.swift in Sources */,
 				E49CE5DF28A668A4001EB99C /* PotfolioViewController.swift in Sources */,

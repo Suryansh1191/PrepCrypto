@@ -23,9 +23,10 @@ class HistoryCDRepository{
         historyCD.cryptoCD = cryptoCD
         MoneyCDRepository.getData { balanceData in
             historyCD.availableMoney = balanceData.avalableMoney
+            PersistantStorage.shared.saveContext()
         }
-        
-        PersistantStorage.shared.saveContext()
+        print("klasdfjas")
+        print(historyCD)
 
         complition()
     }

@@ -22,6 +22,7 @@ class CryptoDataContainer{
                         CryptoDataRepositry.create(data: data) {
                             MoneyCDRepository.createData {
                                 CryptoDataRepositry.getAll { cryptoCD in
+                                    print("Data Updated")
                                     CryptoDataContainer.data = cryptoCD
                                 }
                             }

@@ -14,6 +14,7 @@ class PotfolioTableViewCell: UITableViewCell {
     @IBOutlet weak var statusLable: UILabel!
     @IBOutlet weak var buyedAtLable: UILabel!
     @IBOutlet weak var holdingLable: UILabel!
+    @IBOutlet weak var nameLable: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,9 +28,23 @@ class PotfolioTableViewCell: UITableViewCell {
     }
     
     func setData(data: PotfolioModel){
-        statusLable.text = "Profit"
-        buyedAtLable.text = String(data.buyRate)
-        holdingLable.text = String(data.buyAmount)
+        nameLable.text = data.cryptoCD?.name
+        cryptoIMG.setImageWithURL(data.cryptoCD?.image)
+        if data.buyRate <= (data.cryptoCD?.currentPrice ?? 0.0) {
+            let statusRate = (data.cryptoCD!.currentPrice/data.buyRate)
+            statusLable.text = "\(String(format: "%.2f", statusRate)) %"
+            statusLable.textColor = .green
+            statusIMG.image = UIImage(systemName: "arrowtriangle.up.fill")
+            statusIMG.tintColor = .green
+        }else {
+            let statusRate = (data.buyRate/data.cryptoCD!.currentPrice)
+            statusLable.text = "\(String(format: "%.2f", statusRate)) %"
+            statusLable.textColor = .red
+            statusIMG.image = UIImage(systemName: "arrowtriangle.down.fill")
+            statusIMG.tintColor = .red
+        }
+        buyedAtLable.text = "₹ \(String(format: "%.2f",  data.buyRate))"
+        holdingLable.text = "₹ \(String(format: "%.2f",  data.buyAmount))"
     }
 
 }

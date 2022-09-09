@@ -21,7 +21,6 @@ class ApiNetworkCall {
                 
                 complition(Result.success(decodableResponce))
                 
-                print(decodableResponce)
             }catch{
                 print("error")
                 print(error)

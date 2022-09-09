@@ -31,9 +31,9 @@ class PotfolioCDRepositry {
                     
                     //UPDATE BALANCE
                     MoneyCDRepository.editData(moneySpent: data.buyAmount) {
-                        
+                        print("money updayte")
                         //Adding History
-                        HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingRate: nil) {    }
+                        HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingRate: nil) {  print("history updayte")  }
                         
                     }
                     
@@ -50,7 +50,7 @@ class PotfolioCDRepositry {
                 MoneyCDRepository.editData(moneySpent: data.buyAmount) {
                     
                     //Adding History
-                    HistoryCDRepository.addData(data: data, cryptoCD: (potfolioData?.cryptoCD!)!, sellingRate: nil) {    }
+                    HistoryCDRepository.addData(data: data, cryptoCD: (potfolioData?.cryptoCD!)!, sellingRate: nil) {}
                     
                 }
                 
