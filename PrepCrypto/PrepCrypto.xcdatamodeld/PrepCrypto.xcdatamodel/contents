@@ -20,6 +20,7 @@
     </entity>
     <entity name="HistoryCD" representedClassName="HistoryCD" syncable="YES">
         <attribute name="amountBuy" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="amountSell" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="availableMoney" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="buyRate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -53,7 +54,7 @@
     </entity>
     <elements>
         <element name="CryptoCD" positionX="-292.5984497070312" positionY="4.119384765625" width="128" height="208"/>
-        <element name="HistoryCD" positionX="283.104736328125" positionY="4.142852783203125" width="128" height="163"/>
+        <element name="HistoryCD" positionX="283.104736328125" positionY="4.142852783203125" width="128" height="178"/>
         <element name="PotfolioCD" positionX="48.89422607421875" positionY="-57.7481689453125" width="128" height="118"/>
         <element name="MoneyCD" positionX="-45" positionY="117" width="128" height="74"/>
     </elements>

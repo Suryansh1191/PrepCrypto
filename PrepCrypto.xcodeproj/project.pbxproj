@@ -279,7 +279,6 @@
 				E49CE5DB28A6679C001EB99C /* History */,
 				E49CE5DA28A66777001EB99C /* Potfolio */,
 				E49CE5D928A6676F001EB99C /* CryptoList */,
-				E49CE5ED28A78F35001EB99C /* DetailedCryptoList */,
 				E49CE5A628A63336001EB99C /* AppDelegate.swift */,
 				E49CE5A828A63336001EB99C /* SceneDelegate.swift */,
 				E49CE5AA28A63336001EB99C /* ViewController.swift */,
@@ -312,6 +311,7 @@
 		E49CE5D928A6676F001EB99C /* CryptoList */ = {
 			isa = PBXGroup;
 			children = (
+				E49CE5ED28A78F35001EB99C /* DetailedCryptoList */,
 				E49CE5DC28A6688F001EB99C /* CryptoListViewController.swift */,
 				E49CE5E528A671BD001EB99C /* CrytoTableViewCell.swift */,
 				E49CE5EB28A6792A001EB99C /* CryptoListModel.swift */,

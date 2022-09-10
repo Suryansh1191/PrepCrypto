@@ -9,25 +9,25 @@ import Foundation
 
 class HistoryCDRepository{
     
-    static func addData(data: PotfolioModel, cryptoCD: CryptoCD, sellingRate: Double?, complition: @escaping ()->Void){
+    static func addData(data: PotfolioModel, cryptoCD: CryptoCD, sellingAmount: Double?, complition: @escaping ()->Void){
         let historyCD = HistoryCD(context: PersistantStorage.shared.context)
         
-        historyCD.buyRate = data.buyRate
         historyCD.idCrypto = data.cryptoID
-        historyCD.amountBuy = data.buyAmount
         historyCD.date = Date()
         historyCD.id = UUID()
-        if sellingRate != nil {
-            historyCD.sellRate = sellingRate!
+        if sellingAmount != nil {
+            historyCD.sellRate = data.cryptoCD?.currentPrice ?? 0.0
+            historyCD.amountSell = sellingAmount ?? 0.0
+        }
+        if sellingAmount == nil {
+            historyCD.buyRate = data.buyRate
+            historyCD.amountBuy = data.buyAmount
         }
         historyCD.cryptoCD = cryptoCD
         MoneyCDRepository.getData { balanceData in
             historyCD.availableMoney = balanceData.avalableMoney
             PersistantStorage.shared.saveContext()
         }
-        print("klasdfjas")
-        print(historyCD)
-
         complition()
     }
     

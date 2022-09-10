@@ -23,18 +23,13 @@ class PotfolioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        self.tabBarController?.navigationItem.title = "Potfolio"
-        
-        
         configureTableView()
         addStyleInView()
-        
-        
-        // Do any additional setup after loading the view.
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.title = "Potfolio"
         print("Potfolio View")
         getPotfolioData()
     }
@@ -47,13 +42,6 @@ class PotfolioViewController: UIViewController {
         potfolioView.layer.shadowOffset = CGSize(width: 3, height: 3)
         potfolioView.layer.shadowOpacity = 0.7
         potfolioView.layer.shadowRadius = 4.0
-        
-//        //subPptfolio View
-//        subPotfolioView.layer.cornerRadius = 5
-//        subPotfolioView.layer.shadowColor = UIColor.black.cgColor
-//        subPotfolioView.layer.shadowOffset = CGSize(width: 1, height: 1)
-//        subPotfolioView.layer.shadowOpacity = 0.2
-//        subPotfolioView.layer.shadowRadius = 2.0
     }
     
     func configureTableView() {
@@ -87,9 +75,9 @@ class PotfolioViewController: UIViewController {
         
         self.potfolioCountLable.text = String(count)
         self.inStocksBalanceLable.text = "₹ " + String(format: "%.2f" ,inStocksBalance)
-        let status = (balanceData.totalMoney - (inStocksBalance+balanceData.avalableMoney) / balanceData.totalMoney)
+        let status = (((inStocksBalance+balanceData.avalableMoney) - balanceData.totalMoney) / balanceData.totalMoney)
         
-        if inStocksBalance+balanceData.avalableMoney < balanceData.totalMoney {
+        if ((inStocksBalance+balanceData.avalableMoney) < balanceData.totalMoney) {
             statusLable.text = "- \(String(format: "%.2f", status)) %"
             statusLable.textColor = .red
             statusIMG.image = UIImage(systemName: "arrowtriangle.down.fill")
@@ -97,8 +85,8 @@ class PotfolioViewController: UIViewController {
             
         }else {
             statusLable.text = "+ \(String(format: "%.2f", status)) %"
-            statusLable.textColor = .green
-            statusIMG.tintColor = .green
+            statusLable.textColor = .systemGreen
+            statusIMG.tintColor = .systemGreen
             statusIMG.image = UIImage(systemName: "arrowtriangle.up.fill")
 
         }
@@ -122,5 +110,14 @@ extension PotfolioViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard tableView.indexPathForSelectedRow != nil else { return }
+        
+        let potfolioData = potfolioData[tableView.indexPathForSelectedRow!.row]
+        
+        let destination = segue.destination as? PotfolioDetailedViewController
+        
+        destination?.potfolioData = potfolioData
+    }
     
 }

@@ -18,8 +18,13 @@ class HistoryViewController: UIViewController {
         // Do any additional setup after loading the view.
         //PersistantStorage.shared.deleteAllEntities()
         
+        
         configureTableView()
         getData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.title = "History"
     }
     
     func getData() {

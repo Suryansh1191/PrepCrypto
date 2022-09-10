@@ -20,7 +20,6 @@ class AddToPotfolioViewController: UIViewController {
     @IBOutlet weak var buyAmountLable: UILabel!
     @IBOutlet weak var warningLable: UILabel!
     
-    let detailedViewControler = DetailedCryptoViewController()
     var cryptoData: DetailedCryptoModel?
     var buyAmount = 0.0
     var availableMoney = 0.0
@@ -52,7 +51,7 @@ class AddToPotfolioViewController: UIViewController {
         }
         
         let potfolioDM = PotfolioModel(buyAmount: (Double(amountTextField.text ?? "0.0") ?? 0.0), buyRate: cryptoData?.marketData?.currentPrice?.inr ?? 0.0, cryptoModel: cryptoData!, moneyLeft: 0.0) //force unwraping because we have guard statment in initalizeData()
-        PotfolioCDRepositry.create(data: potfolioDM) {
+        PotfolioCDRepositry.addToPotfolio(data: potfolioDM) {
             self.dismiss(animated: true, completion: nil)
             PotfolioCDRepositry.getAll { data in
                 print(data)

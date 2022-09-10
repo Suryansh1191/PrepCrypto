@@ -10,7 +10,7 @@ import CoreData
 
 class PotfolioCDRepositry {
     
-    static func create(data: PotfolioModel, complition: @escaping () -> Void){
+    static func addToPotfolio(data: PotfolioModel, complition: @escaping () -> Void){
         
         self.getById(id: (data.cryptoModel?.id)!, complition: { potfolioData, count in
             if (count == 0) { //Creating when not added to potfolio before
@@ -30,10 +30,10 @@ class PotfolioCDRepositry {
                     PersistantStorage.shared.saveContext()
                     
                     //UPDATE BALANCE
-                    MoneyCDRepository.editData(moneySpent: data.buyAmount) {
+                    MoneyCDRepository.editData(moneySpent: data.buyAmount, moneyAdded: nil){
                         print("money updayte")
                         //Adding History
-                        HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingRate: nil) {  print("history updayte")  }
+                        HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingAmount: nil) {  print("history updayte")  }
                         
                     }
                     
@@ -47,16 +47,38 @@ class PotfolioCDRepositry {
                 PersistantStorage.shared.saveContext()
                 
                 //UPDATE BALANCE
-                MoneyCDRepository.editData(moneySpent: data.buyAmount) {
+                MoneyCDRepository.editData(moneySpent: data.buyAmount, moneyAdded: nil) {
                     
                     //Adding History
-                    HistoryCDRepository.addData(data: data, cryptoCD: (potfolioData?.cryptoCD!)!, sellingRate: nil) {}
+                    HistoryCDRepository.addData(data: data, cryptoCD: (potfolioData?.cryptoCD!)!, sellingAmount: nil) {}
                     
                 }
                 
                 complition()
             }
         })
+        
+    }
+    
+    static func sell(potfolioData: PotfolioModel, sellingAmount: Double, complition: @escaping () -> Void){
+        self.getById(id: potfolioData.cryptoID ?? "") { potfolioCD, status in
+            if status == 1 {
+                potfolioCD?.holdingAmount = (potfolioCD!.holdingAmount - sellingAmount)
+                PersistantStorage.shared.saveContext()
+                
+                //UPDATE BALANCE
+                MoneyCDRepository.editData(moneySpent: nil, moneyAdded: sellingAmount) {
+                
+                    //Adding History
+                    HistoryCDRepository.addData(data: potfolioData, cryptoCD: (potfolioCD?.cryptoCD!)!, sellingAmount: sellingAmount) {}
+                }
+                complition()
+                
+            }else {
+                complition()
+                //TODO: error handling
+            }
+        }
         
     }
     

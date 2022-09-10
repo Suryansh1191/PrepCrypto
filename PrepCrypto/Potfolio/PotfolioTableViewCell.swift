@@ -31,13 +31,13 @@ class PotfolioTableViewCell: UITableViewCell {
         nameLable.text = data.cryptoCD?.name
         cryptoIMG.setImageWithURL(data.cryptoCD?.image)
         if data.buyRate <= (data.cryptoCD?.currentPrice ?? 0.0) {
-            let statusRate = (data.cryptoCD!.currentPrice/data.buyRate)
+            let statusRate = (data.cryptoCD!.currentPrice/data.buyRate) - 1
             statusLable.text = "\(String(format: "%.2f", statusRate)) %"
-            statusLable.textColor = .green
+            statusLable.textColor = .systemGreen
             statusIMG.image = UIImage(systemName: "arrowtriangle.up.fill")
-            statusIMG.tintColor = .green
+            statusIMG.tintColor = .systemGreen
         }else {
-            let statusRate = (data.buyRate/data.cryptoCD!.currentPrice)
+            let statusRate = (data.buyRate/data.cryptoCD!.currentPrice) - 1 
             statusLable.text = "\(String(format: "%.2f", statusRate)) %"
             statusLable.textColor = .red
             statusIMG.image = UIImage(systemName: "arrowtriangle.down.fill")

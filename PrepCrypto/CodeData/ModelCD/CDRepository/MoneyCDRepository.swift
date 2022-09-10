@@ -41,7 +41,7 @@ class MoneyCDRepository{
         comlition()
     }
     
-    static func editData(moneySpent: Double, complition: @escaping () -> Void){
+    static func editData(moneySpent: Double?, moneyAdded: Double?, complition: @escaping () -> Void){
         
         let fetchRequest = NSFetchRequest<MoneyCD>(entityName: "MoneyCD")
         let fetchByID = NSPredicate(format: "id=%@", "main" as CVarArg)
@@ -51,7 +51,13 @@ class MoneyCDRepository{
         
         let data = result.first!
         
-        data.availableMoney = (data.availableMoney - moneySpent)
+        if moneySpent != nil {
+            data.availableMoney = (data.availableMoney - moneySpent!)
+        }
+        
+        if moneyAdded != nil {
+            data.availableMoney = (data.availableMoney + moneyAdded!)
+        }
         
         PersistantStorage.shared.saveContext()
         

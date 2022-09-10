@@ -23,6 +23,10 @@ class CryptoListViewController: UIViewController {
         getCryptoData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.title = "Crypto List"
+    }
+    
     func configureTableView() {
         tabeView.delegate = self
         tabeView.dataSource = self
@@ -66,4 +70,7 @@ extension CryptoListViewController: UITableViewDelegate, UITableViewDataSource {
         
         tranferDestination.cryptoID = selectedCrypto.id
     }
+    
+    
+    
 }
