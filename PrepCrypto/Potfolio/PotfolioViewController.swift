@@ -19,6 +19,7 @@ class PotfolioViewController: UIViewController {
     @IBOutlet weak var potfolioView: UIView!
     @IBOutlet weak var subPotfolioView: UIView!
     @IBOutlet weak var statusIMG: UIImageView!
+    @IBOutlet weak var assitView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +36,13 @@ class PotfolioViewController: UIViewController {
     }
     
     func addStyleInView() {
-        
-        //Potfolio View
-        potfolioView.layer.cornerRadius = 10
-        potfolioView.layer.shadowColor = UIColor.black.cgColor
-        potfolioView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        potfolioView.layer.shadowOpacity = 0.7
-        potfolioView.layer.shadowRadius = 4.0
+        assitView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        assitView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        assitView.layer.shadowOpacity = 1
+        assitView.layer.shadowRadius = 10.0
+        assitView.clipsToBounds = false
+        assitView.layer.cornerRadius = 30
+        assitView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
     func configureTableView() {
@@ -78,13 +79,13 @@ class PotfolioViewController: UIViewController {
         let status = (((inStocksBalance+balanceData.avalableMoney) - balanceData.totalMoney) / balanceData.totalMoney)
         
         if ((inStocksBalance+balanceData.avalableMoney) < balanceData.totalMoney) {
-            statusLable.text = "- \(String(format: "%.2f", status)) %"
+            statusLable.text = "- \(String(format: "%.4f", status)) %"
             statusLable.textColor = .red
             statusIMG.image = UIImage(systemName: "arrowtriangle.down.fill")
             statusIMG.tintColor = .red
             
         }else {
-            statusLable.text = "+ \(String(format: "%.2f", status)) %"
+            statusLable.text = "+ \(String(format: "%.4f", status)) %"
             statusLable.textColor = .systemGreen
             statusIMG.tintColor = .systemGreen
             statusIMG.image = UIImage(systemName: "arrowtriangle.up.fill")

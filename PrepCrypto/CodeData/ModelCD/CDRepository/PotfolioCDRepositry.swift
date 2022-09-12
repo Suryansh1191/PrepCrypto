@@ -18,7 +18,9 @@ class PotfolioCDRepositry {
                 let potfolioCD = PotfolioCD(context: PersistantStorage.shared.context)
                 
                 potfolioCD.holdingAmount = data.buyAmount
-                potfolioCD.buyRate = data.buyRate
+                if potfolioCD.buyRate == 0.0 {
+                    potfolioCD.buyRate = data.buyRate
+                }
                 potfolioCD.id = UUID()
                 potfolioCD.cryptoid = data.cryptoModel?.id
                 
@@ -31,6 +33,7 @@ class PotfolioCDRepositry {
                     //UPDATE BALANCE
                     MoneyCDRepository.editData(moneySpent: data.buyAmount, moneyAdded: nil){
                         print("money updayte")
+                        
                         //Adding History
                         HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingAmount: nil) { historyCD in
                             potfolioCD.addToHistoryCD(historyCD)
@@ -63,21 +66,18 @@ class PotfolioCDRepositry {
         self.getById(id: potfolioData.cryptoID ?? "") { potfolioCD, status in
             if status == 1 {
                 potfolioCD!.holdingAmount = (potfolioCD!.holdingAmount - sellingAmount)
-                
-                print("68")
-                
+                            
                 //UPDATE BALANCE
                 MoneyCDRepository.editData(moneySpent: nil, moneyAdded: sellingAmount) {
                     
-                    print("73")
                     //Adding History
                     HistoryCDRepository.addData(data: potfolioData, cryptoCD: (potfolioCD?.cryptoCD!)!, sellingAmount: sellingAmount) { historyCD in
                         potfolioCD?.addToHistoryCD(historyCD)
                         PersistantStorage.shared.saveContext()
                         complition()
+
                     }
                 }
-                print("77")
             }else {
                 complition()
                 //TODO: error handling
@@ -98,8 +98,7 @@ class PotfolioCDRepositry {
             
             guard result.count > 0 else { complition(potfolioData); return }
             
-            for i in 0...(result.count - 1) {
-                print(result[i].historyCD)
+            for i in (0..<(result.count)).reversed() {
                 let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoCD: result[i].cryptoCD, cryptoID: result[i].cryptoid, historyCD: result[i].historyCD?.count == 0 ? nil : result[i].historyCD , moneyLeft: result[i].moneyLeft)
                 potfolioData.append(potfolioModel)
             }

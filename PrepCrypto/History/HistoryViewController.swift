@@ -54,9 +54,14 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
         let data = historyData[indexPath.row]
         cell.setData(data: data)
         
-        if indexPath.row != 0 && historyData[indexPath.row].date?.dateFormate() == historyData[indexPath.row - 1].date?.dateFormate() {
-            cell.dateStackView.isHidden = true
+        print("Index::")
+        print(indexPath.row)
+        
+        if ((indexPath.row != 0) && (data.date?.dateFormate() == historyData[indexPath.row - 1].date?.dateFormate())) {
             print("isHidden")
+            cell.dateStackView.isHidden = true
+        }else{ //doing this for cell reuse issue
+            cell.dateStackView.isHidden = false
         }
         
         return cell

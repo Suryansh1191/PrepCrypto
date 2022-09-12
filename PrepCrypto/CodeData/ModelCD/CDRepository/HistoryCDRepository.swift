@@ -40,16 +40,20 @@ class HistoryCDRepository{
             
             guard let result = try PersistantStorage.shared.context.fetch(HistoryCD.fetchRequest()) as? [HistoryCD] else {return complition(historyList)}
             
-            result.forEach { (historyCD) in
+            guard result.count != 0 else { complition(historyList); return }
+            
+            for historyCD in result.reversed() {
                 let history = HistoryModel(idCrypto: historyCD.idCrypto, buyRate: historyCD.buyRate, sellRate: historyCD.sellRate, amountBuy: historyCD.amountBuy, availableMoney: historyCD.availableMoney, id: historyCD.id, date: historyCD.date, cryptoCD: historyCD.cryptoCD)
                 historyList.append(history)
             }
             
-            return complition(historyList)
+            complition(historyList)
+            return
 
         } catch let error {
             print(error)
-            return complition(historyList)
+            complition(historyList)
+            return
         }
         
     }

@@ -15,6 +15,7 @@ class PotfolioDetailedViewController: UIViewController {
     @IBOutlet weak var priceLable: UILabel!
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var historyTableView: UITableView!
+    @IBOutlet weak var historyView: UIView!
     
     var potfolioData: PotfolioModel?
     var historyCount = 0
@@ -36,22 +37,18 @@ class PotfolioDetailedViewController: UIViewController {
     
     func initStyle() {
         
-        historyTableView.clipsToBounds = true
-        historyTableView.layer.cornerRadius = 10
-        historyTableView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        // shadow
-        historyTableView.layer.shadowColor = UIColor.black.cgColor
-        historyTableView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        historyTableView.layer.shadowOpacity = 0.7
-        historyTableView.layer.shadowRadius = 10.0
         
         
+        //shadow
         firstView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        firstView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        firstView.layer.shadowOpacity = 1.0
-        firstView.layer.shadowRadius = 5.0
-        firstView.layer.masksToBounds = false
-        firstView.layer.cornerRadius = 4.0
+        firstView.layer.shadowOffset = CGSize(width: 3, height: 0)
+        firstView.layer.shadowOpacity = 1
+        firstView.layer.shadowRadius = 10.0
+        firstView.clipsToBounds = false
+        firstView.layer.cornerRadius = 30
+        firstView.layer.maskedCorners = [ .layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+        
+        
     }
     
     func initalData() {
