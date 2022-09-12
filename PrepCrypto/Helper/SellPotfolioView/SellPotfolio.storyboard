@@ -86,7 +86,6 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <action selector="sellFieldDidChanged:" destination="Y6W-OH-hqX" eventType="editingChanged" id="hB7-cC-NRg"/>
-                                                    <action selector="sellingInputText:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="0RK-lE-7NL"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rs: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hM-Ok-EWy">

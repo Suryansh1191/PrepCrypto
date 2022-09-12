@@ -36,3 +36,19 @@ extension UIImageView {
         dataTask.resume()
     }
 }
+
+
+extension Date {
+    func dateFormate() -> String {
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd, yyyy"
+                
+        let date: Date? = dateFormatterGet.date(from: self.ISO8601Format() )
+        return dateFormatterPrint.string(from: date!);
+
+    }
+}

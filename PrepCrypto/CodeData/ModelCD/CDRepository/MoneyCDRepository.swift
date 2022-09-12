@@ -60,6 +60,7 @@ class MoneyCDRepository{
         }
         
         PersistantStorage.shared.saveContext()
+        complition()
         
     }
     

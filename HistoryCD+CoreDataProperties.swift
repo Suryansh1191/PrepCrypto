@@ -2,7 +2,7 @@
 //  HistoryCD+CoreDataProperties.swift
 //  PrepCrypto
 //
-//  Created by suryansh Bisen on 10/09/22.
+//  Created by suryansh Bisen on 12/09/22.
 //
 //
 
@@ -16,15 +16,16 @@ extension HistoryCD {
         return NSFetchRequest<HistoryCD>(entityName: "HistoryCD")
     }
 
-    @NSManaged public var idCrypto: String?
-    @NSManaged public var buyRate: Double
-    @NSManaged public var sellRate: Double
     @NSManaged public var amountBuy: Double
-    @NSManaged public var availableMoney: Double
-    @NSManaged public var id: UUID?
-    @NSManaged public var date: Date?
     @NSManaged public var amountSell: Double
+    @NSManaged public var availableMoney: Double
+    @NSManaged public var buyRate: Double
+    @NSManaged public var date: Date?
+    @NSManaged public var id: UUID?
+    @NSManaged public var idCrypto: String?
+    @NSManaged public var sellRate: Double
     @NSManaged public var cryptoCD: CryptoCD?
+    @NSManaged public var potfolioCD: PotfolioCD?
 
 }
 

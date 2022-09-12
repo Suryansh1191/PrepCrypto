@@ -50,7 +50,7 @@ class AddToPotfolioViewController: UIViewController {
             return 
         }
         
-        let potfolioDM = PotfolioModel(buyAmount: (Double(amountTextField.text ?? "0.0") ?? 0.0), buyRate: cryptoData?.marketData?.currentPrice?.inr ?? 0.0, cryptoModel: cryptoData!, moneyLeft: 0.0) //force unwraping because we have guard statment in initalizeData()
+        let potfolioDM = PotfolioModel(buyAmount: (Double(amountTextField.text ?? "0.0") ?? 0.0), buyRate: cryptoData?.marketData?.currentPrice?.inr ?? 0.0, cryptoModel: cryptoData!, historyCD: nil, moneyLeft: 0.0) //force unwraping because we have guard statment in initalizeData()
         PotfolioCDRepositry.addToPotfolio(data: potfolioDM) {
             self.dismiss(animated: true, completion: nil)
             PotfolioCDRepositry.getAll { data in

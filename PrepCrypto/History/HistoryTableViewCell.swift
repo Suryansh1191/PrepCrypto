@@ -14,10 +14,11 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var avalableBalanceLable: UILabel!
     @IBOutlet weak var statusLable: UILabel!
     @IBOutlet weak var statusIMG: UIImageView!
-    @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var dateLable: UILabel!
-    
     @IBOutlet weak var cryptoIMG: UIImageView!
+    @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var dateStackView: UIStackView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,25 +37,24 @@ class HistoryTableViewCell: UITableViewCell {
     }
     
     func setData(data: HistoryModel){
-        dateLable.text = data.date?.ISO8601Format()
         
-        if data.sellRate != nil {
+        dateLable.text = data.date?.dateFormate()
+        cryptoIMG.setImageWithURL(data.cryptoCD?.image)
+        
+        if data.sellRate != 0.00 {
             buySellLable.text = "Sell"
             buySellLable.textColor = .red
             nameLable.text = data.cryptoCD?.name
-            buySellAmount.text = "Selling Price:" + String(format: "%.2f", data.sellRate!)
-            avalableBalanceLable.text = String(format: "%.2f", data.availableMoney)
-            statusLable.text = "- 0.25%"
-            statusLable.textColor = .red
-            statusIMG.image = UIImage(systemName: "arrowtriangle.down.fill")
-            statusIMG.tintColor = .red
-            
+            buySellAmount.text = "Selled At: Rs " + String(format: "%.2f", data.sellRate!)
+            avalableBalanceLable.text = "Balance: Rs " + String(format: "%.2f", data.availableMoney)
+            statusLable.isHidden = true
+            statusIMG.isHidden = true
         }else {
             buySellLable.text = "Buy"
-            buySellLable.textColor = .green
+            buySellLable.textColor = .systemGreen
             nameLable.text = data.cryptoCD?.name
-            buySellAmount.text = "Buying Price:" + String(format: "%.2f", data.buyRate!)
-            avalableBalanceLable.text = String(format: "%.2f", data.availableMoney)
+            buySellAmount.text = "Buyed at: Rs " + String(format: "%.2f", data.buyRate!)
+            avalableBalanceLable.text = "Balance: Rs " + String(format: "%.2f", data.availableMoney)
             statusLable.isHidden = true
             statusIMG.isHidden = true
         }

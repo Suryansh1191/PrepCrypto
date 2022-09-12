@@ -14,20 +14,37 @@ class PotfolioDetailedViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var priceLable: UILabel!
     @IBOutlet weak var firstView: UIView!
-    @IBOutlet weak var detailsLable: UILabel!
+    @IBOutlet weak var historyTableView: UITableView!
     
     var potfolioData: PotfolioModel?
+    var historyCount = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        initTableView()
         initalData()
         initStyle()
     }
     
+    func initTableView() {
+        historyTableView.delegate = self
+        historyTableView.dataSource = self
+    }
+    
     func initStyle() {
+        
+        historyTableView.clipsToBounds = true
+        historyTableView.layer.cornerRadius = 10
+        historyTableView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        // shadow
+        historyTableView.layer.shadowColor = UIColor.black.cgColor
+        historyTableView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        historyTableView.layer.shadowOpacity = 0.7
+        historyTableView.layer.shadowRadius = 10.0
+        
         
         firstView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         firstView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -35,14 +52,17 @@ class PotfolioDetailedViewController: UIViewController {
         firstView.layer.shadowRadius = 5.0
         firstView.layer.masksToBounds = false
         firstView.layer.cornerRadius = 4.0
-
-        
     }
     
     func initalData() {
         nameLable.text = potfolioData?.cryptoCD?.name
         imageView.setImageWithURL(potfolioData?.cryptoCD?.image)
         priceLable.text = "₹ " + String(format: "%.2f", (potfolioData?.cryptoCD?.currentPrice ?? 0.0))
+        
+        historyCount = potfolioData?.historyCD?.count ?? 0
+        DispatchQueue.main.async {
+            self.historyTableView.reloadData()
+        }
     }
     
     @IBAction func sellStocks(_ sender: Any) {
@@ -60,10 +80,38 @@ class PotfolioDetailedViewController: UIViewController {
         let destiantion = segue.destination as? DetailedCryptoViewController
         
         destiantion?.cryptoID = potfolioData?.cryptoID
-        
-        
-        
-        
+    
     }
 
+}
+
+extension PotfolioDetailedViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //print(potfolioData?.historyCD)
+        
+        return historyCount
+    
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: ConstentData.POTFOLIO_HISTORY_CELL) as! PotfolioHistoryTableViewCell
+//
+        let historyCDSet = potfolioData?.historyCD
+//
+//        guard historyCDSet != nil else {
+//            let cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
+//            return cell
+//
+//        }
+//
+        let data = historyCDSet?[indexPath.row]
+//
+//
+        cell.setData(data: data as! HistoryCD)
+//
+        return cell
+    }
+    
+    
 }

@@ -20,11 +20,11 @@ class HistoryViewController: UIViewController {
         
         
         configureTableView()
-        getData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "History"
+        getData()
     }
     
     func getData() {
@@ -52,9 +52,12 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: ConstentData.HISTORY_TABLEVIEW_CELL) as! HistoryTableViewCell
         
         let data = historyData[indexPath.row]
-        
-        
         cell.setData(data: data)
+        
+        if indexPath.row != 0 && historyData[indexPath.row].date?.dateFormate() == historyData[indexPath.row - 1].date?.dateFormate() {
+            cell.dateStackView.isHidden = true
+            print("isHidden")
+        }
         
         return cell
     }

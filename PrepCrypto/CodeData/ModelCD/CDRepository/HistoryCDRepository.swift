@@ -9,7 +9,7 @@ import Foundation
 
 class HistoryCDRepository{
     
-    static func addData(data: PotfolioModel, cryptoCD: CryptoCD, sellingAmount: Double?, complition: @escaping ()->Void){
+    static func addData(data: PotfolioModel, cryptoCD: CryptoCD, sellingAmount: Double?, complition: @escaping (HistoryCD)->Void){
         let historyCD = HistoryCD(context: PersistantStorage.shared.context)
         
         historyCD.idCrypto = data.cryptoID
@@ -27,8 +27,9 @@ class HistoryCDRepository{
         MoneyCDRepository.getData { balanceData in
             historyCD.availableMoney = balanceData.avalableMoney
             PersistantStorage.shared.saveContext()
+            complition(historyCD)
         }
-        complition()
+        
     }
     
     static func getAllData(complition: @escaping ([HistoryModel])->Void){

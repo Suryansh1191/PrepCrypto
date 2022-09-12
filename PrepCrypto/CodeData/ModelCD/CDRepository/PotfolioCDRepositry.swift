@@ -27,34 +27,33 @@ class PotfolioCDRepositry {
                 CryptoDataRepositry.getByID(cryptoID: (data.cryptoModel?.id!)!) { cryptoCD in
                     
                     potfolioCD.cryptoCD = cryptoCD
-                    PersistantStorage.shared.saveContext()
                     
                     //UPDATE BALANCE
                     MoneyCDRepository.editData(moneySpent: data.buyAmount, moneyAdded: nil){
                         print("money updayte")
                         //Adding History
-                        HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingAmount: nil) {  print("history updayte")  }
-                        
+                        HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingAmount: nil) { historyCD in
+                            potfolioCD.addToHistoryCD(historyCD)
+                            PersistantStorage.shared.saveContext()
+                            complition()
+                        }
                     }
-                    
-                    
-                    
-                    complition()
                 }
             } else {
                 potfolioData!.holdingAmount = (potfolioData!.holdingAmount + data.buyAmount)
                 potfolioData!.buyRate = data.buyRate
-                PersistantStorage.shared.saveContext()
+                
                 
                 //UPDATE BALANCE
                 MoneyCDRepository.editData(moneySpent: data.buyAmount, moneyAdded: nil) {
                     
                     //Adding History
-                    HistoryCDRepository.addData(data: data, cryptoCD: (potfolioData?.cryptoCD!)!, sellingAmount: nil) {}
-                    
+                    HistoryCDRepository.addData(data: data, cryptoCD: (potfolioData?.cryptoCD!)!, sellingAmount: nil) { historyCD in
+                        potfolioData?.addToHistoryCD(historyCD)
+                        PersistantStorage.shared.saveContext()
+                        complition()
+                    }
                 }
-                
-                complition()
             }
         })
         
@@ -63,17 +62,22 @@ class PotfolioCDRepositry {
     static func sell(potfolioData: PotfolioModel, sellingAmount: Double, complition: @escaping () -> Void){
         self.getById(id: potfolioData.cryptoID ?? "") { potfolioCD, status in
             if status == 1 {
-                potfolioCD?.holdingAmount = (potfolioCD!.holdingAmount - sellingAmount)
-                PersistantStorage.shared.saveContext()
+                potfolioCD!.holdingAmount = (potfolioCD!.holdingAmount - sellingAmount)
+                
+                print("68")
                 
                 //UPDATE BALANCE
                 MoneyCDRepository.editData(moneySpent: nil, moneyAdded: sellingAmount) {
-                
+                    
+                    print("73")
                     //Adding History
-                    HistoryCDRepository.addData(data: potfolioData, cryptoCD: (potfolioCD?.cryptoCD!)!, sellingAmount: sellingAmount) {}
+                    HistoryCDRepository.addData(data: potfolioData, cryptoCD: (potfolioCD?.cryptoCD!)!, sellingAmount: sellingAmount) { historyCD in
+                        potfolioCD?.addToHistoryCD(historyCD)
+                        PersistantStorage.shared.saveContext()
+                        complition()
+                    }
                 }
-                complition()
-                
+                print("77")
             }else {
                 complition()
                 //TODO: error handling
@@ -95,7 +99,8 @@ class PotfolioCDRepositry {
             guard result.count > 0 else { complition(potfolioData); return }
             
             for i in 0...(result.count - 1) {
-                let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoCD: result[i].cryptoCD, cryptoID: result[i].cryptoid, moneyLeft: result[i].moneyLeft)
+                print(result[i].historyCD)
+                let potfolioModel = PotfolioModel(buyAmount: result[i].holdingAmount, buyRate: result[i].buyRate, cryptoModel: nil, cryptoCD: result[i].cryptoCD, cryptoID: result[i].cryptoid, historyCD: result[i].historyCD?.count == 0 ? nil : result[i].historyCD , moneyLeft: result[i].moneyLeft)
                 potfolioData.append(potfolioModel)
             }
             complition(potfolioData)

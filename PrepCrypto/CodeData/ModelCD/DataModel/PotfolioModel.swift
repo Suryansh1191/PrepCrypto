@@ -13,5 +13,6 @@ struct PotfolioModel{
     var cryptoModel: DetailedCryptoModel?
     var cryptoCD: CryptoCD?
     var cryptoID: String?
+    var historyCD: NSOrderedSet?
     var moneyLeft: Double
 }

@@ -10,6 +10,7 @@
 		6CFAEE0E779878BFF20833FD /* Pods_PrepCryptoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9941EF17BB28FB5CA53B243 /* Pods_PrepCryptoTests.framework */; };
 		7EFD5B75115C357F85A59DBB /* Pods_PrepCrypto_PrepCryptoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CBBE35FCD0DB99B135DF31 /* Pods_PrepCrypto_PrepCryptoUITests.framework */; };
 		AA3A9427CFB205DE4C70679F /* Pods_PrepCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4A2D2AE9DEF36B88D87BC4 /* Pods_PrepCrypto.framework */; };
+		E42E354128CE54A100EA4AFB /* PotfolioHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42E354028CE54A100EA4AFB /* PotfolioHistoryTableViewCell.swift */; };
 		E450423728C11FFD00D28C57 /* CryptoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450423628C11FFD00D28C57 /* CryptoRepository.swift */; };
 		E450423928C1358A00D28C57 /* PersistantStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450423828C1358A00D28C57 /* PersistantStorage.swift */; };
 		E450427328C4660000D28C57 /* PotfolioCDRepositry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450427228C4660000D28C57 /* PotfolioCDRepositry.swift */; };
@@ -84,6 +85,7 @@
 		C2CBBE35FCD0DB99B135DF31 /* Pods_PrepCrypto_PrepCryptoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepCrypto_PrepCryptoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4A2D2AE9DEF36B88D87BC4 /* Pods_PrepCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43F65C7837745519850D153 /* Pods-PrepCryptoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepCryptoTests.release.xcconfig"; path = "Target Support Files/Pods-PrepCryptoTests/Pods-PrepCryptoTests.release.xcconfig"; sourceTree = "<group>"; };
+		E42E354028CE54A100EA4AFB /* PotfolioHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotfolioHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		E450423628C11FFD00D28C57 /* CryptoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoRepository.swift; sourceTree = "<group>"; };
 		E450423828C1358A00D28C57 /* PersistantStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantStorage.swift; sourceTree = "<group>"; };
 		E450427228C4660000D28C57 /* PotfolioCDRepositry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotfolioCDRepositry.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				E450429F28C8B29900D28C57 /* PotfolioDetailedViewController.swift */,
+				E42E354028CE54A100EA4AFB /* PotfolioHistoryTableViewCell.swift */,
 			);
 			path = DetailedPotfolio;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				E450428C28C53BD000D28C57 /* HistoryCDRepository.swift in Sources */,
 				E450427328C4660000D28C57 /* PotfolioCDRepositry.swift in Sources */,
 				E49CE5EC28A6792A001EB99C /* CryptoListModel.swift in Sources */,
+				E42E354128CE54A100EA4AFB /* PotfolioHistoryTableViewCell.swift in Sources */,
 				E49CE5A928A63336001EB99C /* SceneDelegate.swift in Sources */,
 				E475E49B28AA3AA20074889F /* AddToPotfolioViewController.swift in Sources */,
 				E450427F28C4840500D28C57 /* CryptoCD+CoreDataProperties.swift in Sources */,
