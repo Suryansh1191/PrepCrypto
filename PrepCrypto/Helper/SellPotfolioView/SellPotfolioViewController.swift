@@ -16,6 +16,7 @@ class SellPotfolioViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var roundTextfield: UITextField!
+    @IBOutlet weak var innerContentView: UIView!
     
     var potfolioData: PotfolioModel?
     var sellingamount: Double = 0.0
@@ -57,6 +58,5 @@ class SellPotfolioViewController: UIViewController {
         PotfolioCDRepositry.sell(potfolioData: potfolioData!, sellingAmount: sellingamount) {
             self.dismiss(animated: true, completion: nil)
         }
-        
     }
 }

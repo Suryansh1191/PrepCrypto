@@ -12,6 +12,7 @@ class CryptoListViewController: UIViewController {
     @IBOutlet weak var tabeView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     var cryptodata = [CryptoListModel]()
+    private let searchVC = UISearchController(searchResultsController: nil)
     
     
     override func viewDidLoad() {
@@ -20,16 +21,22 @@ class CryptoListViewController: UIViewController {
         //navigationController?.navigationBar.prefersLargeTitles = true
         
         configureTableView()
-        getCryptoData()
+        configureSearch()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Crypto List"
+        getCryptoData()
     }
     
     func configureTableView() {
         tabeView.delegate = self
         tabeView.dataSource = self
+    }
+    
+    func configureSearch() {
+        self.tabBarController?.navigationItem.searchController = searchVC
+        searchVC.searchBar.delegate = self
     }
     
     func getCryptoData() {
@@ -39,6 +46,40 @@ class CryptoListViewController: UIViewController {
                 self.tabeView.reloadData()
                 self.spinner.isHidden = true
             }
+        }
+    }
+    
+    func searchCrypto(searchText: String){
+        let filteredData = CryptoDataContainer.data.filter { $0.name!.contains(searchText) }
+        self.cryptodata = filteredData
+        DispatchQueue.main.async {
+            self.tabeView.reloadData()
+            self.spinner.isHidden = true
+        }
+    }
+    
+}
+
+//MARK: Search
+extension CryptoListViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let text = searchBar.text, !text.isEmpty else {
+            return
+        }
+        searchCrypto(searchText: text)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.isEmpty else {
+            return
+        }
+        searchCrypto(searchText: text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.cryptodata = CryptoDataContainer.data
+        DispatchQueue.main.async {
+            self.tabeView.reloadData()
         }
     }
 }

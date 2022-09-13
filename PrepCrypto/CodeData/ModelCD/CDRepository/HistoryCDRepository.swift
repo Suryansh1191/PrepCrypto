@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class HistoryCDRepository{
     
@@ -58,8 +59,17 @@ class HistoryCDRepository{
         
     }
     
-    static func getById(complition: @escaping ([HistoryModel])->Void){
+    static func getById(cryptoID: String ,complition: @escaping ([HistoryCD])->Void){
+        let fetchRequest = NSFetchRequest<HistoryCD>(entityName: "HistoryCD")
+        let fetchByID = NSPredicate(format: "idCrypto=%@", cryptoID as CVarArg)
+        fetchRequest.predicate = fetchByID
         
+        let result = try! PersistantStorage.shared.context.fetch(fetchRequest)
+        
+        
+        
+        complition(result)
+        return
     }
     
 }

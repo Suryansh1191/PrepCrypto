@@ -7,8 +7,14 @@
 
 import Foundation
 
+protocol CryptoDataFetchedDelegate{
+    func isCryptoDataFetched(status: Bool)
+}
+
 class CryptoDataContainer{
+    
     static var data = [CryptoListModel]()
+    static var fetchedDelegate: CryptoDataFetchedDelegate?
     
     static func getData(){
         let url = URL(string: "\(UrlContaner.crypto)/markets?vs_currency=inr")
@@ -22,7 +28,7 @@ class CryptoDataContainer{
                         CryptoDataRepositry.create(data: data) {
                             MoneyCDRepository.createData {
                                 CryptoDataRepositry.getAll { cryptoCD in
-                                    print("Data Updated")
+                                    CryptoDataContainer.fetchedDelegate?.isCryptoDataFetched(status: true)
                                     CryptoDataContainer.data = cryptoCD
                                 }
                             }
@@ -31,6 +37,7 @@ class CryptoDataContainer{
                     }else{
                         CryptoDataRepositry.updateData(data: data) {
                             CryptoDataRepositry.getAll { cryptoCD in
+                                CryptoDataContainer.fetchedDelegate?.isCryptoDataFetched(status: true)
                                 CryptoDataContainer.data = cryptoCD
                             }
                         }
@@ -43,6 +50,7 @@ class CryptoDataContainer{
                 
                 CryptoDataRepositry.getAll { data in
                     CryptoDataContainer.data = data
+                    CryptoDataContainer.fetchedDelegate?.isCryptoDataFetched(status: false)
                 }
                 //error handling
                 print(error)

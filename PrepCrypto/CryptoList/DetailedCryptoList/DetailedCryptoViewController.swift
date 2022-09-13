@@ -57,6 +57,7 @@ class DetailedCryptoViewController: UIViewController, ChartViewDelegate {
         
         imgView.setImageWithURL(cryptoData?.image?.large)
         
+        
         chartDrow()
         
     }

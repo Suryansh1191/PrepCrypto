@@ -168,10 +168,21 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="done-image" translatesAutoresizingMaskIntoConstraints="NO" id="sLi-yC-OVh">
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="7BC-ZB-OVG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="JGV-De-faV"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="aBd-2y-MzN"/>
+                                    <constraint firstAttribute="width" constant="200" id="fBB-aD-wKV"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="sLi-yC-OVh" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="2gh-yJ-pUq"/>
+                            <constraint firstItem="sLi-yC-OVh" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="BSa-Sy-6HN"/>
                             <constraint firstItem="VMa-9M-fdX" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="QJV-MA-rCw"/>
                             <constraint firstItem="VMa-9M-fdX" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Rq3-YB-D8o"/>
                         </constraints>
@@ -182,6 +193,7 @@
                         <outlet property="availableMoenyLable" destination="QqN-6r-KfP" id="veU-0Z-nth"/>
                         <outlet property="buyAmountLable" destination="f38-fl-9r0" id="pjZ-iT-4PL"/>
                         <outlet property="cancleButton" destination="hA0-4Z-fi0" id="QQR-kG-gNr"/>
+                        <outlet property="doneImage" destination="sLi-yC-OVh" id="Yoq-da-VGK"/>
                         <outlet property="imgView" destination="dPn-wW-U1n" id="plB-Bx-vmr"/>
                         <outlet property="nameLable" destination="FSd-NF-VzS" id="bO1-o5-Trh"/>
                         <outlet property="priceLable" destination="o0k-DZ-1f6" id="N1U-UP-tua"/>
@@ -194,6 +206,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="done-image" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

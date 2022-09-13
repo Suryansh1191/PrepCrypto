@@ -19,6 +19,7 @@ class AddToPotfolioViewController: UIViewController {
     @IBOutlet weak var availableMoenyLable: UILabel!
     @IBOutlet weak var buyAmountLable: UILabel!
     @IBOutlet weak var warningLable: UILabel!
+    @IBOutlet weak var doneImage: UIImageView!
     
     var cryptoData: DetailedCryptoModel?
     var buyAmount = 0.0
@@ -30,17 +31,16 @@ class AddToPotfolioViewController: UIViewController {
         
 
         view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        doneImage.isHidden = true
         MoneyCDRepository.getData { moneyCD in
             print(moneyCD.avalableMoney)
             self.availableMoney = moneyCD.avalableMoney
         }
         initalizeData()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func cancleAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func potfolioAction(_ sender: Any) {
@@ -52,9 +52,10 @@ class AddToPotfolioViewController: UIViewController {
         
         let potfolioDM = PotfolioModel(buyAmount: (Double(amountTextField.text ?? "0.0") ?? 0.0), buyRate: cryptoData?.marketData?.currentPrice?.inr ?? 0.0, cryptoModel: cryptoData!, historyCD: nil, moneyLeft: 0.0) //force unwraping because we have guard statment in initalizeData()
         PotfolioCDRepositry.addToPotfolio(data: potfolioDM) {
-            self.dismiss(animated: true, completion: nil)
-            PotfolioCDRepositry.getAll { data in
-                print(data)
+            UIView.animate(withDuration: 5.0) {
+                self.doneImage.isHidden = false
+            } completion: { _ in
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -76,7 +77,4 @@ class AddToPotfolioViewController: UIViewController {
         print(buyAmount)
         buyAmountLable.text = "C \(String(format: "%.2f", buyAmount))"
     }
-    
-    
-    
 }

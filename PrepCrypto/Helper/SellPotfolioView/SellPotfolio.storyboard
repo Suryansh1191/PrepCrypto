@@ -154,6 +154,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tzC-7z-sJ5" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="XHX-Zo-dQL"/>
+                            <constraint firstItem="a0V-Q9-Jbh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="77" id="bMp-32-ZlW"/>
                             <constraint firstItem="tzC-7z-sJ5" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="gGB-A6-rqQ"/>
                         </constraints>
                     </view>
@@ -161,6 +162,7 @@
                         <outlet property="contentView" destination="tzC-7z-sJ5" id="bLM-dI-KYa"/>
                         <outlet property="holdingLable" destination="hrG-2H-asW" id="s5Q-r2-xwr"/>
                         <outlet property="imageView" destination="1GH-rk-no3" id="B3h-1H-ckD"/>
+                        <outlet property="innerContentView" destination="a0V-Q9-Jbh" id="GxJ-Ev-cVH"/>
                         <outlet property="mainView" destination="5EZ-qb-Rvc" id="C6h-EK-JFi"/>
                         <outlet property="nameLable" destination="lgC-2h-8hh" id="32M-6e-OvO"/>
                         <outlet property="priceLable" destination="zFq-sz-H6L" id="OB5-ea-Ecf"/>
