@@ -16,11 +16,12 @@ PrepCrypto is an iOS Based application that works on Swift & UIKit to provide an
 ## Screen Shots 
 
 ### Potfolio View
-<img src = "" width="200" hight ="350"> <img src = "https://user-images.githubusercontent.com/69685349/190219449-43ff1856-e8c6-4010-8501-62a5bef08df8.png" width="200" hight ="350"> <img src = "https://user-images.githubusercontent.com/69685349/181471391-81cd8c08-e0f2-4439-ba02-a168597ca307.png" width="200" hight ="350">
-![Screenshot 2022-09-14 at 10 41 25 PM](https://user-images.githubusercontent.com/69685349/190219196-897033f1-2893-465c-879e-70fd085d4097.png) ![Screenshot 2022-09-14 at 10 42 55 PM]() ![Screenshot 2022-09-14 at 10 46 12 PM 1](https://user-images.githubusercontent.com/69685349/190219996-1ae3a40d-5fa8-4bd2-bcc3-23307d5676c4.png)
+<img src = "https://user-images.githubusercontent.com/69685349/190231991-f60ddaed-8c6f-4d64-9306-464dad158c4d.png" width="210" hight ="360"> <img src = "https://user-images.githubusercontent.com/69685349/190232017-b82ba2b3-8bc3-474e-b51f-6252d5ef0f8d.png" width="210" hight ="360"> <img src = "https://user-images.githubusercontent.com/69685349/190232055-ee772777-0515-4f1f-ae6f-0720a8ede09c.png" width="200" hight ="350"> 
+
 
 ### Crypto List & Buy stock 
-![Screenshot 2022-09-14 at 10 43 43 PM 1](https://user-images.githubusercontent.com/69685349/190219603-edc324de-a13b-4461-800d-5555f351c223.png)  ![Screenshot 2022-09-14 at 10 45 02 PM](https://user-images.githubusercontent.com/69685349/190219834-e3f20cd5-6e1d-42fb-bb4a-7c30fad6ddbb.png) ![Screenshot 2022-09-14 at 10 45 34 PM](https://user-images.githubusercontent.com/69685349/190219891-c2e07c9d-a473-4000-93e6-4c40e11acf76.png)
+<img src = "https://user-images.githubusercontent.com/69685349/190219603-edc324de-a13b-4461-800d-5555f351c223.png" width="210" hight ="360"> <img src = "https://user-images.githubusercontent.com/69685349/190219834-e3f20cd5-6e1d-42fb-bb4a-7c30fad6ddbb.png" width="200" hight ="350"> <img src = "https://user-images.githubusercontent.com/69685349/190219891-c2e07c9d-a473-4000-93e6-4c40e11acf76.png" width="200" hight ="350"> 
 
 ### History 
-![Screenshot 2022-09-14 at 10 47 00 PM](https://user-images.githubusercontent.com/69685349/190220179-70efef41-aa69-4ce7-b8cb-079ac453562e.png)
+<img src = "https://user-images.githubusercontent.com/69685349/190220179-70efef41-aa69-4ce7-b8cb-079ac453562e.png" width="200" hight ="350"> 
+
