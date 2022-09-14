@@ -16,7 +16,7 @@ PrepCrypto is an iOS Based application that works on Swift & UIKit to provide an
 ## Screen Shots 
 
 ### Potfolio View
-<img src = "https://user-images.githubusercontent.com/69685349/190231991-f60ddaed-8c6f-4d64-9306-464dad158c4d.png" width="210" hight ="360"> <img src = "https://user-images.githubusercontent.com/69685349/190232017-b82ba2b3-8bc3-474e-b51f-6252d5ef0f8d.png" width="210" hight ="360"> <img src = "https://user-images.githubusercontent.com/69685349/190232055-ee772777-0515-4f1f-ae6f-0720a8ede09c.png" width="200" hight ="350"> 
+<img src = "https://user-images.githubusercontent.com/69685349/190231991-f60ddaed-8c6f-4d64-9306-464dad158c4d.png" width="210" hight ="360"> <img src = "https://user-images.githubusercontent.com/69685349/190232017-b82ba2b3-8bc3-474e-b51f-6252d5ef0f8d.png" width="210" hight ="360"> <img src = "https://user-images.githubusercontent.com/69685349/190233725-e0c29c4b-28a3-4b8b-84c9-b409c9ec0d95.png" width="200" hight ="350"> 
 
 
 ### Crypto List & Buy stock 
