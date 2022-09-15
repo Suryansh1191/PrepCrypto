@@ -25,3 +25,7 @@ PrepCrypto is an iOS Based application that works on Swift & UIKit to provide an
 ### History 
 <img src = "https://user-images.githubusercontent.com/69685349/190220179-70efef41-aa69-4ce7-b8cb-079ac453562e.png" width="200" hight ="350"> 
 
+### Core Data Entity Realtion 
+![Screenshot 2022-09-15 at 11 49 31 AM](https://user-images.githubusercontent.com/69685349/190329179-6ae3ec2c-c1eb-4b0f-9de5-8b5b65d6180d.png)
+
+
