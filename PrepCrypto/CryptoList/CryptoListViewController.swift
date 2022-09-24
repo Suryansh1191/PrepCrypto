@@ -27,11 +27,16 @@ class CryptoListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Crypto List"
         getCryptoData()
+        configureSearch()
     }
     
     func configureTableView() {
         tabeView.delegate = self
         tabeView.dataSource = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.searchController = nil
     }
     
     func configureSearch() {
@@ -41,7 +46,7 @@ class CryptoListViewController: UIViewController {
     
     func getCryptoData() {
         if CryptoDataContainer.data.count != 0 {
-            self.cryptodata = CryptoDataContainer.data
+            self.cryptodata = CryptoDataContainer.data	
             DispatchQueue.main.async {
                 self.tabeView.reloadData()
                 self.spinner.isHidden = true

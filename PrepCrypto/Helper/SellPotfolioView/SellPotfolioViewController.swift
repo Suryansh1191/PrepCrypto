@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol UpdatePotfolioViewController{
+    func update()
+}
+
 class SellPotfolioViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
@@ -17,15 +21,22 @@ class SellPotfolioViewController: UIViewController {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var roundTextfield: UITextField!
     @IBOutlet weak var innerContentView: UIView!
+    @IBOutlet weak var alertLable: UILabel!
     
     var potfolioData: PotfolioModel?
     var sellingamount: Double = 0.0
+    var deligate: UpdatePotfolioViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initalizeData()
+        alertLable.isHidden = true
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("DisApper")
     }
     
     func initalizeData() {
@@ -50,13 +61,21 @@ class SellPotfolioViewController: UIViewController {
     }
     
     @IBAction func cancleButton(_ sender: Any) {
+        self.deligate?.update()
         self.dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func buyButtin(_ sender: Any) {
+        
+        if sellingamount > (potfolioData?.buyAmount ?? 0.0) {
+            alertLable.text = "You only hold Rs.\(potfolioData?.buyAmount ?? 0.0)"
+            return
+        }
+        
         //print(sellingamount)
         PotfolioCDRepositry.sell(potfolioData: potfolioData!, sellingAmount: sellingamount) {
-            self.dismiss(animated: true, completion: nil)
+            self.deligate?.update()
         }
     }
 }

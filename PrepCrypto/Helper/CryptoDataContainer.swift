@@ -47,10 +47,12 @@ class CryptoDataContainer{
                 
             case .failure(let error):
                 //TODO: Notify NO internet
+                print("No Internet")
                 
                 CryptoDataRepositry.getAll { data in
-                    CryptoDataContainer.data = data
+                    print(data)
                     CryptoDataContainer.fetchedDelegate?.isCryptoDataFetched(status: false)
+                    CryptoDataContainer.data = data
                 }
                 //error handling
                 print(error)

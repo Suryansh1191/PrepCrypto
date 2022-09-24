@@ -27,8 +27,8 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="idCrypto" optional="YES" attributeType="String"/>
         <attribute name="sellRate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="cryptoCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CryptoCD" inverseName="history" inverseEntity="CryptoCD"/>
-        <relationship name="potfolioCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PotfolioCD" inverseName="historyCD" inverseEntity="PotfolioCD"/>
+        <relationship name="cryptoCD" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CryptoCD" inverseName="history" inverseEntity="CryptoCD"/>
+        <relationship name="potfolioCD" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="PotfolioCD" inverseName="historyCD" inverseEntity="PotfolioCD"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -46,8 +46,8 @@
         <attribute name="holdingAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="moneyLeft" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="cryptoCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CryptoCD" inverseName="potfolio" inverseEntity="CryptoCD"/>
-        <relationship name="historyCD" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="HistoryCD" inverseName="potfolioCD" inverseEntity="HistoryCD"/>
+        <relationship name="cryptoCD" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CryptoCD" inverseName="potfolio" inverseEntity="CryptoCD"/>
+        <relationship name="historyCD" optional="YES" toMany="YES" deletionRule="No Action" ordered="YES" destinationEntity="HistoryCD" inverseName="potfolioCD" inverseEntity="HistoryCD"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -56,8 +56,8 @@
     </entity>
     <elements>
         <element name="CryptoCD" positionX="-292.5984497070312" positionY="4.119384765625" width="128" height="208"/>
-        <element name="HistoryCD" positionX="283.104736328125" positionY="4.142852783203125" width="128" height="193"/>
-        <element name="MoneyCD" positionX="-45" positionY="117" width="128" height="74"/>
+        <element name="HistoryCD" positionX="283.104736328125" positionY="4.142852783203125" width="128" height="179"/>
+        <element name="MoneyCD" positionX="-296.5553588867188" positionY="-117.8143615722656" width="128" height="74"/>
         <element name="PotfolioCD" positionX="48.89422607421875" positionY="-57.7481689453125" width="128" height="134"/>
     </elements>
 </model>

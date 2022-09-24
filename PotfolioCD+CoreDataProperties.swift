@@ -2,7 +2,7 @@
 //  PotfolioCD+CoreDataProperties.swift
 //  PrepCrypto
 //
-//  Created by suryansh Bisen on 12/09/22.
+//  Created by suryansh Bisen on 14/09/22.
 //
 //
 

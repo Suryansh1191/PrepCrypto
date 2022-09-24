@@ -15,7 +15,7 @@ class ApiNetworkCall {
         
         let dataTask = session.dataTask(with: url) { data, response, error in
             
-            guard data != nil else { complition(Result.failure(error as! Error)); return  }
+            guard data != nil else { complition(Result.failure(error!)); return  }
             
             do{
                 let deocder = JSONDecoder()

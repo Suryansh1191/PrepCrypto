@@ -99,8 +99,11 @@ class PotfolioViewController: UIViewController {
             statusIMG.image = UIImage(systemName: "arrowtriangle.up.fill")
 
         }
-        spinner.isHidden = true
-        spinnerView.isHidden = true
+        
+        if !spinnerView.isHidden {
+            spinner.isHidden = true
+            spinnerView.isHidden = true
+        }
     }
 }
 
@@ -135,9 +138,15 @@ extension PotfolioViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension PotfolioViewController: CryptoDataFetchedDelegate{
     func isCryptoDataFetched(status: Bool) {
-        print("AYA AYA AYA")
+        print(status)
         DispatchQueue.main.async {
+            if status == false{
+                let alert = UIAlertController(title: "No Internet", message: "App will run on lastest stored Data. You cant buy or sell stocks.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
             self.getPotfolioData()
         }
+        
     }
 }

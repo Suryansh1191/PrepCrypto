@@ -33,7 +33,7 @@ class PotfolioDetailedViewController: UIViewController {
         initStyle()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         initalData()
     }
     
@@ -93,7 +93,7 @@ class PotfolioDetailedViewController: UIViewController {
         
         profitPersentageLable.text = String(format: "%.4f", profitPersentage) + "%"
         proftAmountLable.text = "₹ " + String(format: "%.4f", profitAmount)
-        amountInvestedLable.text = "₹ " + String(format: "%.4f", buyAmount)
+        amountInvestedLable.text = "₹ " + String(format: "%.4f", (buyAmount-sellAmount))
         
         if profitAmount < 0 {
             proftAmountLable.textColor = .red
@@ -109,6 +109,7 @@ class PotfolioDetailedViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "SellPotfolio", bundle: nil)
         let myAlert = storyboard.instantiateViewController(withIdentifier: "sellStocks") as! SellPotfolioViewController
+        myAlert.deligate = self
         myAlert.potfolioData = potfolioData
         myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
@@ -124,6 +125,16 @@ class PotfolioDetailedViewController: UIViewController {
 
 }
 
+//MARK: UPDATE DELEGATE
+extension PotfolioDetailedViewController: UpdatePotfolioViewController{
+    func update() {
+        DispatchQueue.main.async {
+            self.initalData()
+        }
+    }
+}
+
+//MARK: TABLE VIEW
 extension PotfolioDetailedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print(potfolioData?.historyCD)

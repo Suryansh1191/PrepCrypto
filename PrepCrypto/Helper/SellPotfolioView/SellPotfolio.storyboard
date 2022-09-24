@@ -106,10 +106,17 @@
                                                     <action selector="cancleButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="EV0-ME-Abl"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGU-2B-nzO">
+                                                <rect key="frame" x="203.5" y="148.5" width="28.5" height="13.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <color key="highlightedColor" systemColor="labelColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="3hM-Ok-EWy" firstAttribute="centerY" secondItem="IHk-lc-euL" secondAttribute="centerY" id="516-Z2-kFU"/>
+                                            <constraint firstItem="Rhl-HF-kG1" firstAttribute="trailing" secondItem="OGU-2B-nzO" secondAttribute="trailing" id="99Q-dd-gss"/>
                                             <constraint firstItem="hrG-2H-asW" firstAttribute="leading" secondItem="wU6-oO-n2t" secondAttribute="trailing" constant="5" id="FUd-hP-pOy"/>
                                             <constraint firstItem="wU6-oO-n2t" firstAttribute="leading" secondItem="a0V-Q9-Jbh" secondAttribute="leading" constant="15" id="HSG-UT-FC7"/>
                                             <constraint firstItem="Rhl-HF-kG1" firstAttribute="centerY" secondItem="IHk-lc-euL" secondAttribute="centerY" id="Hu4-8b-Zw6"/>
@@ -119,6 +126,7 @@
                                             <constraint firstItem="IHk-lc-euL" firstAttribute="top" secondItem="wU6-oO-n2t" secondAttribute="bottom" constant="10" id="UWQ-Gr-b0z"/>
                                             <constraint firstItem="ldB-7W-FZA" firstAttribute="centerY" secondItem="Zxt-GK-Ash" secondAttribute="centerY" id="Xya-5W-kFI"/>
                                             <constraint firstAttribute="height" constant="220" id="ZIb-e3-5nx"/>
+                                            <constraint firstItem="OGU-2B-nzO" firstAttribute="top" secondItem="Rhl-HF-kG1" secondAttribute="bottom" constant="2" id="aWG-ui-duk"/>
                                             <constraint firstItem="hrG-2H-asW" firstAttribute="centerY" secondItem="wU6-oO-n2t" secondAttribute="centerY" id="ejg-cE-pm7"/>
                                             <constraint firstItem="wU6-oO-n2t" firstAttribute="top" secondItem="1GH-rk-no3" secondAttribute="bottom" constant="20" id="flm-He-yCZ"/>
                                             <constraint firstItem="lgC-2h-8hh" firstAttribute="top" secondItem="1GH-rk-no3" secondAttribute="top" constant="5" id="jbb-CX-uGm"/>
@@ -159,6 +167,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alertLable" destination="OGU-2B-nzO" id="D3d-Ve-V81"/>
                         <outlet property="contentView" destination="tzC-7z-sJ5" id="bLM-dI-KYa"/>
                         <outlet property="holdingLable" destination="hrG-2H-asW" id="s5Q-r2-xwr"/>
                         <outlet property="imageView" destination="1GH-rk-no3" id="B3h-1H-ckD"/>
@@ -175,6 +184,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

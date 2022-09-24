@@ -66,8 +66,6 @@ class HistoryCDRepository{
         
         let result = try! PersistantStorage.shared.context.fetch(fetchRequest)
         
-        
-        
         complition(result)
         return
     }

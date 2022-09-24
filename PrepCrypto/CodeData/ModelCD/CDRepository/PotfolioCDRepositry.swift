@@ -32,17 +32,25 @@ class PotfolioCDRepositry {
                     
                     //UPDATE BALANCE
                     MoneyCDRepository.editData(moneySpent: data.buyAmount, moneyAdded: nil){
-                        print("money updayte")
                         
                         //Adding History
-                        HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingAmount: nil) { historyCD in
-                            potfolioCD.addToHistoryCD(historyCD)
-                            PersistantStorage.shared.saveContext()
-                            complition()
+                        HistoryCDRepository.addData(data: data, cryptoCD: cryptoCD!, sellingAmount: nil) { addedHistoryCD in
+                            
+                            //Checking for past History
+                            HistoryCDRepository.getById(cryptoID: (data.cryptoID ?? "")) { historyCD in
+                                if historyCD.count != 0 {
+                                    let index = NSIndexSet(index: 0)
+                                    potfolioCD.insertIntoHistoryCD(historyCD, at: index)
+                                }
+                                potfolioCD.addToHistoryCD(addedHistoryCD)
+                                PersistantStorage.shared.saveContext()
+                                complition()
+                            }
+                            
                         }
                     }
                 }
-            } else {
+            } else { //just editing the data
                 potfolioData!.holdingAmount = (potfolioData!.holdingAmount + data.buyAmount)
                 potfolioData!.buyRate = data.buyRate
                 
@@ -65,17 +73,35 @@ class PotfolioCDRepositry {
     static func sell(potfolioData: PotfolioModel, sellingAmount: Double, complition: @escaping () -> Void){
         self.getById(id: potfolioData.cryptoID ?? "") { potfolioCD, status in
             if status == 1 {
-                potfolioCD!.holdingAmount = (potfolioCD!.holdingAmount - sellingAmount)
-                            
-                //UPDATE BALANCE
-                MoneyCDRepository.editData(moneySpent: nil, moneyAdded: sellingAmount) {
+                
+                if potfolioCD!.holdingAmount <= sellingAmount { //Deleting the Data
                     
-                    //Adding History
-                    HistoryCDRepository.addData(data: potfolioData, cryptoCD: (potfolioCD?.cryptoCD!)!, sellingAmount: sellingAmount) { historyCD in
-                        potfolioCD?.addToHistoryCD(historyCD)
-                        PersistantStorage.shared.saveContext()
-                        complition()
+                    //UPDATE BALANCE
+                    MoneyCDRepository.editData(moneySpent: nil, moneyAdded: sellingAmount) {
+                        
+                        //Adding History
+                        HistoryCDRepository.addData(data: potfolioData, cryptoCD: (potfolioCD?.cryptoCD!)!, sellingAmount: sellingAmount) { historyCD in
+                            PersistantStorage.shared.context.delete(potfolioCD!)
+                            PersistantStorage.shared.saveContext()
+                            complition()
+                            return
+                        }
+                    }
+                
+                }else{
+                    potfolioCD!.holdingAmount = (potfolioCD!.holdingAmount - sellingAmount)
+                                
+                    //UPDATE BALANCE
+                    MoneyCDRepository.editData(moneySpent: nil, moneyAdded: sellingAmount) {
+                        
+                        //Adding History
+                        HistoryCDRepository.addData(data: potfolioData, cryptoCD: (potfolioCD?.cryptoCD!)!, sellingAmount: sellingAmount) { historyCD in
+                            potfolioCD?.addToHistoryCD(historyCD)
+                            PersistantStorage.shared.saveContext()
+                            complition()
+                            return
 
+                        }
                     }
                 }
             }else {
